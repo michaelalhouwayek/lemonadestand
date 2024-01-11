@@ -1,1 +1,94 @@
+* {
+    box-sizing: border-box;
+}
 
+html {
+    background-image: url('fond.jpg');
+}
+
+body {
+    font-family: sans-serif;
+    max-width:1000px;
+    border: none;
+    background: darkgray;
+    margin: 0 auto;
+	box-shadow: 1px 1px 12px #aaa;
+    text-align: center;
+}
+
+h1, h2, h3, h4 {
+    text-align: center;
+    color:white;
+    margin:0;
+}
+
+label {
+  display:inline-block;
+  width:150px;
+}
+
+input[type="submit"] {
+  display: block;
+  margin:auto;
+}
+
+table {
+    margin:10px auto;
+    border-collapse: collapse;
+    border: solid 1px;
+}
+
+th {
+    background: linear-gradient(#fff,#eee);
+
+}
+
+td, th {
+    border: dashed 1px;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    padding:0;
+}
+
+header {
+    font-size: 10px;
+    text-align: right;
+    font-style: italic;
+}
+
+footer {
+    text-align: left;
+    font-size: 10px;
+    background: gray;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+/*img.Personnage {
+    display: block;
+    width:33px;
+    margin:0;
+    cursor: pointer;
+}*/
+
+/*#PereNoel, #Grinch, #Fond {
+    display: none;
+}*/
+
+/* section {
+    display: inline-block;
+    vertical-align: middle;
+} */
+#Compteurs {
+    display: inline-block;
+    border: solid 2px;
+    padding: 10px 20px;
+    margin:20px 50px;
+    font-family:fantasy;
+}
+
+input[type=button] {
+    font-family:fantasy;
+    padding: 10px 20px;
+}

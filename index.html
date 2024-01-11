@@ -1,1 +1,56 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+    <meta charset="utf-8">
+    <title>Completez les familles d'elements</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        Cours de NSI - Projet Janvier / Fevrier 2023
+    </header>
+
+    <h1>Connectez les familles d'elements!</h1>
+
+    <section>
+
+        <div id="Compteurs">
+            Score : <span id="Score">0</span>
+            <b>|||||</b>
+            Temps : <span id="Temps">0</span>
+        </div>
+
+        <input id="boutton" type="button" value="Démarrer le jeu" onclick="lancerJeu();" />
+
+    </section>
+
+    <section>
+        <table>
+
+        </table>
+    </section>
+
+    <footer>
+
+        PROJET NSI - MICHAEL AL HOUWAYEK - Lycée Claudel - Ottawa - 2023 <br />
+
+        <ul>
+
+            <li>
+                Inspiration : <a href="https://www.nytimes.com/games/connections">NYTimes Connections</a>
+            </li>
+
+        </ul>
+    </footer>
+
+    <!-- <img id="PereNoel" src='pnoel.png' class='Personnage' onclick='$(this).remove();augmenterScore();' /> -->
+
+    <script src="jquery-3.7.1.min.js" charset="utf-8"></script>
+    <script src="main.js" charset="utf-8"></script>
+
+</body>
+
+</html>
