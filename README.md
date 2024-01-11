@@ -1,10 +1,10 @@
-Projet Python 1: Mordle
+Projet Python 2: When Life gives you L3monz
 
 Cahier des charges
 
-Nom/objectif: Mordle: développer un programme python similaire au jeu Wordle en ligne.
+Nom/objectif: When Life gives you L3monz: développer un site web qui simule une entreprise de stand de limonade pour mieux comprendre des notions de base d'economie (Spé SES)
 
-Contraintes/règles: Il faut deviner un mot, le jeu indique si une lettre est dans le mot et dans la position correcte, ou si elle appartient au mot mais dans la fausse position. Tu as 5 chances pour deviner le mot complet correctement.
+Contraintes/règles: le jeu doit servir comme outil de revision pour le SES.
 
 Squelette: Après la création et assignation de variables (mot_deviner, mots_cachee) et une liste de mots (mots) avec une liste de définitions de chaque mots, on crée un boucle while où se déroulera le code principal, dans cette boucle on a des conditions qui vérifie les lettres obtenues d'après un ‘input’ donné par le joueur, et si ces lettres sont dans la position correcte et/ou dans le mot (les lettres sont donc mis dans une liste et leurs index comparés avec la liste des lettres du mot à deviner).
 
