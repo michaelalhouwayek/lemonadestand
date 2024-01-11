@@ -1,4 +1,4 @@
-Projet Python 2: When Life gives you L3monz
+Projet JS 2: When Life gives you L3monz
 
 Cahier des charges
 
