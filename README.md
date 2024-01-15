@@ -1,23 +1,14 @@
-Projet JS 2: When Life gives you L3monz
+Projet 2: When Life gives you L3monz - Cahier de charges.
 
-Cahier des charges
+Nom/objectif: When Life gives you L3monz: développer un site web qui simule une entreprise de stand de limonade pour mieux comprendre des notions de base d'economie (Spé SES).
 
-Nom/objectif: When Life gives you L3monz: développer un site web qui simule une entreprise de stand de limonade pour mieux comprendre des notions de base d'economie (Spé SES)
+Contraintes/règles: Vous êtes un joueur qui doit prendre soin de son stand lemande en gérant ses finances avec les publicités, les prix des boissons et la décoration du stand. En fonction de la météo et du nombre de clients disponibles, vous devez gérer différents aspects de votre stand de limonade pour réaliser des bénéfices et éviter de perdre de l'argent. Le jeu suit la loi de l'offre et de la demande.
 
-Contraintes/règles: le jeu doit servir comme outil de revision pour le SES.
-
-Squelette: Après la création et assignation de variables (mot_deviner, mots_cachee) et une liste de mots (mots) avec une liste de définitions de chaque mots, on crée un boucle while où se déroulera le code principal, dans cette boucle on a des conditions qui vérifie les lettres obtenues d'après un ‘input’ donné par le joueur, et si ces lettres sont dans la position correcte et/ou dans le mot (les lettres sont donc mis dans une liste et leurs index comparés avec la liste des lettres du mot à deviner).
+Squelette: Nous commençons par établir les variables qui seront ensuite utilisées pour déterminer la météo, les bénéfices, les tarifs des clients, etc. Ensuite, nous continuons en initialisant les principaux aspects du jeu sur le front et le back end. Après cela nous avons une boucle pour le jeu qui compterait les tours tout en randomisant à chaque fois certains aspects du jeu de manière différente rendant plus ou moins difficile la gestion de votre entreprise. D'autres fonctions de gestion du temps et des coûts seront également utilisées pour suivre les progrès.
 
 Étapes du développement: 
 
-0.1.0: faire un code avec une petite liste de 6 mots et une interface de base composée uniquement de texte
-0.2.0: régler le problème d’affichage lorsqu’une lettre apparaît plusieurs fois et avoir une liste plus longue
-0.3.0: ajout des définitions des mots
- 
-"avion", "blanc", "chien", "douze", "euros", "fable", "gazon", "habit", "idole", "jouet", "laser", "moule", "noble", "orvet", "piano", "quasi", "route", "sable", "table", "usine", "vague", "wagon", "xyste", "yacht", "zabre",
-
-0.3.1: utilisateur choisi si il veut définitions
-
+0.1.0: Nous n'avons pas encore établi une version stable du jeu.
 
 
 Compte-rendu écrit
