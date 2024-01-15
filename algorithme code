@@ -1,0 +1,52 @@
+import random
+
+constants for colour
+constants for spectator movement speed
+
+*temp variable
+#between 15 and 35
+
+
+price variable
+#between $1.00 and $5.00
+
+weather variable
+#  between 1 and 5
+
+CustomersPerDay variable
+
+constants for relation between temperature and customers:
+
+customers = temperature* (random between 0.6 and 0.8)
+
+
+
+
+
+weather is random 
+  1 is thunder
+  2 is light rain
+  3 is gray  
+  4 is some clouds
+  5 is pure sun
+
+
+*#temperature based on weather as a fun feature:
+
+  if weather is 1:
+    temp is between 15-20 
+
+  if weather is 2:
+    temp is between 17-22 
+
+  if weather is 3:
+    temp is between 19-24
+
+  if weather is 4:
+    temp is between 22-27
+
+  if weather is 5:
+    temp is between 27-35 
+
+
+
