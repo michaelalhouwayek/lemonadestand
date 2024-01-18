@@ -1,14 +1,23 @@
 import random
 
 constants for colour
-constants for spectator movement speed
+constants for customer movement speed
 
 *temp variable
 #between 15 and 35
 
+advertisements variable
+between 1 and 3
+
+1 appeal to small buisiness
+2 appeal to quality
+3 appeal to its hot outside
 
 price variable
 #between $1.00 and $5.00
+
+InversePrice = 2/price
+# we can play with this once the game is working to change how profitable each price is
 
 weather variable
 #  between 1 and 5
@@ -17,7 +26,7 @@ CustomersPerDay variable
 
 constants for relation between temperature and customers:
 
-customers = temperature* (random between 0.6 and 0.8)
+CustomersPerDay = temperature* (random between 0.6 and 0.8)*InversePrice
 
 
 
