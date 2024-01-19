@@ -65,8 +65,8 @@ section {
     border-width: 100%;
     border-color: black;
     border-radius: 10px;
-    max-width: 20%;
-    height: 200px;
+    width: 17%;
+    height: 15%;
     margin-top: 10px;
     margin-right: 10px;
     float: right;
@@ -78,10 +78,10 @@ section {
 }
 
 #jeu #stand {
-    width: 25%;
-    height: 30%;
-    margin-top:230px;
-    margin-left:150px;
+    width: 30%;
+    height: 37%;
+    margin-top:185px;
+    margin-left:30px;
 }
 
 #jeu #route {
@@ -94,23 +94,12 @@ section {
 }
 
 #jeu #publicite {
-    border: solid;
-    border-width: 100%;
-    border-color: black;
-    max-width: 20%;
-    max-height: 20%;
-    float: right;
-    margin-right: 10px;
-    margin-bottom: 100px;
+    position: absolute;
+    width: 9%;
+    height: 28%;
+    bottom: -47px;
+    right: 425px;
     
-}
-
-#jeu #publicite #panneau {
-    max-width: 20%;
-}
-
-#jeu #publicite #contenu {
-
 }
 
 #jeu #controlleur {
