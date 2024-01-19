@@ -9,9 +9,7 @@
 
 <body>
 
-    <header>
-        Cours de NSI - Projet Janvier / Fevrier 2023
-    </header>
+    <!--<header>Cours de NSI - Projet Janvier / Fevrier 2023</header> -->
     <h1 id="Titre">Bienvenue a lemonade stand! Voyons-nous si vous etes des bon entrepreneurs!</h1>
 
     <section id="Statistiques">
@@ -24,53 +22,43 @@
 
         <input id="boutton" type="button" value="Démarrer le jeu" onclick="lancerJeu();" />
 
-    </section>
+    </section> <br/>
 
     <section id="jeu">
-
-        <div id="Stand">
-
+        
+        <div id="meteo">
+            <h2>Metéo de aujourd'hui</h3> <br/>
+            <img id="nuage" src='Images/nuage.png' class='meteo' style="display:none"/>
+            <img id="soleil" src='Images/soleil.png' class='meteo' />
         </div>
+        
+        <img id="stand" src='Images/stand.png'/> <br/>
 
-        <div id="Route">
+        <img id="route" src="Images/route.png"/> <br/>
 
-        </div>
+        <div id="publicite">
+            <h2>Publicite du jour:</h2> <br/>
+            <img id="panneau" src="Images/panneau_publicite.png"/>
+            <img id="contenu" src="Images/publicite.png" style="display: none;"/>
+            
 
-        <div id="Controlleur">
+        </div> <br/>
 
-        </div>
+        <section id="controlleur">
 
-        <div id="Publicite">
-            <div id="panneau">
+        </section> <br/>
 
-            </div>
-            <div id="contenu">
-
-            </div>
-        </div>
-
-    </section>
+    </section> <br/>
 
     <footer>
         PROJET NSI - Lycée Claudel - Ottawa - 2023 <br />
         <ul>
             Developper par:
-            <li> Michael AL Houwayek </li>
-            <li> Luccin ___ </li>
-            <li> Caleb ___ </li>
+            <li> Michael </li>
+            <li> Luccin </li>
+            <li> Caleb </li>
         </ul>
-        
     </footer>
-
-    <section id="images">
-        <img id="nuage" src='Images/nuage.png' class='meteo'/>
-        <img id="soleil" src='Images/soleil.png' class='meteo'/>
-        <img id="stand" src='Images/image.png'/>
-        <img id="route" src="Images/route.png"/>
-        <img id="panneau_publicite" src="Images/panneau_publicite"/>
-        <img id="publicite" src="Images/publicite.png"/>
-    </section>
-    
     
     <!--onclick='$(this).remove();augmenterScore();'-->
 
