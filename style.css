@@ -77,12 +77,13 @@ section {
     max-height: 70%;
 }
 
-#jeu #stand {
+#jeu #adstand {
     width: 30%;
     height: 37%;
     margin-top:185px;
     margin-left:30px;
 }
+
 
 #jeu #route {
     position: absolute;

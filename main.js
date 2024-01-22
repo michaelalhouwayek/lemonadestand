@@ -1,11 +1,31 @@
-$(document).ready(function () {
-  for (var i = 1; i <= 4; i++) {
-    $("section table").append("<tr>");
-    for (var j = 1; j <= 4; j++) {
-      $("section table tr:last-of-type").append("<td>");
-    }
-  }
-});
+
+// 1 is snow
+//2 is rain
+//3 is gray
+//4 is sun and cloud
+//5 is full sun
+meteo==randint(1,5)
+
+var temperature
+
+if (meteo === 1) {
+  temperature == randint(15,20)
+}
+if (meteo === 2) {
+  temperature == randint(17,22)
+}
+if (meteo === 3) {
+  temperature == randint (19,24)
+
+}
+if (meteo === 4) {
+  temperature == randint (22,27)
+}
+if (meteo === 5) {
+  temperature == randint (27,35)
+
+}
+
 
 function randint(min, max) {
   var alea = min + Math.floor(Math.random() * (max - min + 1));
