@@ -2,14 +2,14 @@
 
 body {
     font-family: sans-serif;
-    background: darkgray;
+    background: yellowgreen;
 	box-shadow: 1px 1px 12px #aaa;
     text-align: center;
 }
 
 h1, h2, h3, h4 {
     text-align: center;
-    color:white;
+    color:black;
     margin:0;
 }
 
@@ -103,6 +103,7 @@ section {
 }
 
 #jeu #controlleur {
+    background-color: darkgoldenrod;
     position: relative;
     max-width: 90%;
     height: 30%;
