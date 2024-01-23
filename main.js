@@ -1,29 +1,32 @@
 
-// 1 is snow
-//2 is rain
-//3 is gray
-//4 is sun and cloud
-//5 is full sun
-meteo==randint(1,5)
+// 1 is snowy
+//2 is stormy
+//3 is rainy
+//4 is cloudy
+//5 is sunny
+meteo = randint(1,5)
 
 var temperature
 
 if (meteo === 1) {
   temperature == randint(15,20)
+  $("#neige").show()
 }
 if (meteo === 2) {
   temperature == randint(17,22)
+  $("#tempete").show()
 }
 if (meteo === 3) {
   temperature == randint (19,24)
-
+  $("#pluie").show()
 }
 if (meteo === 4) {
   temperature == randint (22,27)
+  $("#nuage").show()
 }
 if (meteo === 5) {
   temperature == randint (27,35)
-
+  $("#soleil").show()
 }
 
 

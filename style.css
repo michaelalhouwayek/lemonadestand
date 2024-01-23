@@ -72,11 +72,6 @@ section {
     float: right;
 }
 
-#jeu #meteo #nuage,#soleil {
-    max-width: 70%;
-    max-height: 70%;
-}
-
 #jeu #adstand {
     width: 30%;
     height: 37%;
@@ -102,7 +97,11 @@ section {
     right: 425px;
     
 }
-
+#jeu #meteo img {
+    display: none;
+    max-width: 70%;
+    max-height: 70%;
+}
 #jeu #controlleur {
     background-color: darkgoldenrod;
     position: relative;

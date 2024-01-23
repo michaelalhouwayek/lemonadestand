@@ -29,15 +29,13 @@
         <div id="meteo">
             <h2>Metéo du jour:</h3>
                      
-            <img id="nuage" src='Images/nuage.png' class='meteo' style="display:none"/>
-            <img id="soleil" src='Images/soleil.png' class='meteo'/>
-            <img id="nuage et soleil"/>
-            <img id="gris"/>
-            <img id="pleut"/>
+            <img id="nuage" src='Images/meteo/cloudy.png' class='meteo' style="display:show"/> <!--GRAY-->
+            <img id="soleil" src='Images/meteo/sunny.png' class='meteo'/>
+            <img id="vent" src="Images/meteo/windy.png" class="meteo" /> 
+            <img id="tempete" src="Images/meteo/stormy.png" class="meteo" />
+            <img id="pluie" src="Images/meteo/rainy.png" class="meteo"/>
+            <img id="neige" src="Images/meteo/snowy.png" class="meteo"/>
 
-        </div>
-        <div class="slidecontainer">
-            <input type="range" min="0.50" max="5.00" value="2.75" class="slider" id="myRange">
         </div>
         
         <img id="adstand" src='Images/stand.png'/>
@@ -49,7 +47,9 @@
         </div>
 
         <section id="controlleur">
-
+            <div id="sliderMoney">
+                <input type="range" min="0.50" max="5.00" value="0" class="slider" id="sliderMoneyValue">
+            </div>
         </section> <br/>
 
     </section> <br/>
