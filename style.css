@@ -1,3 +1,5 @@
+/* MARGINS / POSITIONING IN PIXELS AND SIZING IN PERCENTAGES */
+
 body {
     font-family: sans-serif;
     background: yellowgreen;
@@ -44,15 +46,23 @@ section {
     border:none;
 }
 
+#Compteurs {
+    display: inline-block;
+    border: solid 2px;
+    padding: 10px 20px;
+    margin: 20px 50px;
+    font-family: fantasy;
+}
+
 #jeu {
-    width: 100%;
+    width: 99%;
     height: 900px;
 }
 
 #meteo {
     border: solid;
     border-width: 100%;
-    border-color: black;
+    border-color: gray;
     border-radius: 10px;
     width: 15%;
     height: 27%;
@@ -62,15 +72,15 @@ section {
 }
 
 #lemonade_stand {
-    margin-left:-5%;
-    margin-top: 11.5%;
+    margin-left: -100px;
+    margin-top: 167px;
     width: 30%;
     height: 65%;
-    bottom:0%;
+    bottom: 0%;
 }
 
 #adstand {
-    margin-bottom: 5.5%;
+    margin-bottom: 80px;
     width: 8%;
     height: 30%;
 }
@@ -81,7 +91,7 @@ section {
     border-color: forestgreen;
     border-radius: 10px;
     background-image: url("Images/route.png");
-    background-size:100% 100%;
+    background-size: 100% 100%;
     position: relative;
     width: 97%;
     height: 65%;
@@ -95,25 +105,36 @@ section {
     max-width: 70%;
     max-height: 70%;
 }
+
 #controlleur {
     border-color: orange;
     background-color: darkgoldenrod;
-    position: relative;
     width: 93%;
     height: 30%;
-    margin-left: 3%;
-    bottom: -3%;
+    margin-left: 48px;
 }
 
-#Compteurs {
-    display: inline-block;
-    border: solid 2px;
-    padding: 10px 20px;
-    margin:20px 50px;
-    font-family:fantasy;
+#argent {
+    float:left;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+#jour {
+    float:right;
+    margin-right: 7px;
+    margin-top: 5px;
+}
+
+#sliderArgent {
+    margin-top: 50px;
+}
+
+#adsContainer {
+    margin-top:20px;   
 }
 
 input[type=button] {
-    font-family:fantasy;
+    font-family: fantasy;
     padding: 10px 20px;
 }

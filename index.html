@@ -41,17 +41,32 @@
             </div>
 
             <img id="lemonade_stand" src='Images/stand.png'/>
-
             <img id="adstand" src="Images/panneau_publicite.png"/>
 
-        </div>
-        
-        </div>
+        </div> <br/>
 
         <section id="controlleur">
-            <div id="sliderMoney">
-                <input type="range" min="0.50" max="5.00" value="0" class="slider" id="sliderMoneyValue">
+
+            <h2 id="argent">Argent: #</h2>
+            <h2 id="jour">Jour: #</h2> <br/>
+
+            <div id="sliderArgent">
+                <h1 style="font-size:x-large;">Cout du limonade aujourdhui: </h1>
+                <input id="sliderArgentValue" type="range" min="0.50" max="5.00" value="0">
+                <h2 id="argentDisplay">$##</h2>
+            </div> <br/>
+
+            <div id="adsContainer">
+                <h1 style="font-size:x-large;">Choisissez l'advertisement du jour:</h1>
+
+                <select id="ads">
+                    <option value="15">$100 for +15% boost</option>
+                    <option value="10">$75 for +10% boost</option>
+                    <option value="5">$50 for +5% boost</option>
+                </select>
+
             </div>
+
         </section> <br/>
 
     </section> <br/>
