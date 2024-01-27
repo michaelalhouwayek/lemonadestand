@@ -24,17 +24,9 @@ header {
     font-style: italic;
 }
 
-footer {
-    text-align: left;
-    font-size: 10px;
-    background: gray;
-    margin-top: 10px;
-    padding: 5px;
-}
-
 /*cursor: pointer;*/
 
-section {
+section,footer,#menu,#stock,#upgrades {
     /*display: inline-block;*/
     vertical-align: middle;
     border: solid;
@@ -42,9 +34,21 @@ section {
     border-color: black;
 }
 
+footer {
+    text-align: left;
+    font-size: 10px;
+    border: solid 2.5px;
+    border-color: greenyellow;
+    background: forestgreen;
+    margin-top: 10px;
+    padding: 5px;
+}
+
 #Statistiques {
     border:none;
 }
+
+#startGame:hover {background-color: rgb(131, 124, 124);}
 
 #Compteurs {
     display: inline-block;
@@ -56,7 +60,8 @@ section {
 
 #jeu {
     width: 99%;
-    height: 900px;
+    height: 1100px;
+    border-radius: 15px;
 }
 
 #meteo {
@@ -94,7 +99,7 @@ section {
     background-size: 100% 100%;
     position: relative;
     width: 97%;
-    height: 65%;
+    height: 54%;
     left: 20px;
     top: 10px;
     z-index:-1;
@@ -109,32 +114,43 @@ section {
 #controlleur {
     border-color: orange;
     background-color: darkgoldenrod;
+    border-radius: 10px;
     width: 93%;
     height: 30%;
+    margin-top: 100px;
     margin-left: 48px;
 }
 
-#argent {
-    float:left;
-    margin-left: 5px;
-    margin-top: 5px;
+#controlSections {
+    float: left;
+    margin-top:-42px;
+    /*borders + colors*/
 }
 
-#jour {
-    float:right;
-    margin-right: 7px;
-    margin-top: 5px;
+#menu,#stock,#upgrades {background-color: darkgoldenrod; border-color: orange; border-radius: 5px;}
+#menu:hover,#stock:hover,#upgrades:hover {background-color: rgb(109, 80, 7);}
+
+#menuSection,#stockSection,#upgradesSection {
+    height: 77%;
+    border-radius: 5px;
+    border: solid 2px rgba(255,165,0,.5);
+}
+#menuSection {
+
+}
+#stockSection {
+
+}
+#upgradesSection {
+
 }
 
-#sliderArgent {
-    margin-top: 50px;
-}
-
-#adsContainer {
-    margin-top:20px;   
-}
+#argent {float:left; margin-left: 5px; margin-top: 5px;}
+#jour {float:right; margin-right: 7px; margin-top: -47px;}
+#adsContainer {margin-top:5px; margin-right:120px;}
 
 input[type=button] {
     font-family: fantasy;
     padding: 10px 20px;
+    background-color: white;
 }

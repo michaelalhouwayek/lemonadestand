@@ -5,22 +5,25 @@
     <meta charset="utf-8">
     <title>Lemonade stand!</title>
     <link href="style.css" rel="stylesheet">
+
+    <script src="jquery-3.7.1.min.js" charset="utf-8"></script>
+    <script src="main.js" charset="utf-8"></script>
 </head>
 
 <body>
 
     <!--<header>Cours de NSI - Projet Janvier / Fevrier 2023</header> -->
-    <h1 id="Titre">Bienvenue a lemonade stand! Voyons-nous si vous etes des bon entrepreneurs!</h1>
+    <h1 id="Titre">Bienvenue a lemonade stand! Voyons-nous si vous etes des bon entrepreneurs!</h1> <br/>
 
     <section id="Statistiques">
 
-        <div id="Compteurs">
+        <div id="Compteurs" style="display:none;">
             Argent : <span id="Argent">0</span>
             <b>|||||</b>
             Metéo : <span id="Meteo">0</span>
         </div>
 
-        <input id="boutton" type="button" value="Démarrer le jeu" onclick="lancerJeu();" />
+        <input id="startGame" type="button" value="Démarrer le jeu" onclick="lancerJeu();" />
 
     </section> <br/>
 
@@ -47,15 +50,21 @@
 
         <section id="controlleur">
 
+            <div id="controlSections">
+                <input id="menu" type="button" value="Menu"/>
+                <input id="upgrades" type="button" value="Upgrades"/>
+                <input id="stock" type="button" value="Stock"/>
+            </div>
+
+            <script> <!-- The javascript specifically for the buttons -->
+                $(document).ready(function() {
+                    $("#menu").click(function() { $("#menuSection").slideDown(); $("#upgradesSection").hide(); $("#stockSection").hide(); });
+                    $("#upgrades").click(function() { $("#menuSection").hide(); $("#upgradesSection").slideDown(); $("#stockSection").hide(); });
+                    $("#stock").click(function() { $("#menuSection").hide(); $("#upgradesSection").hide(); $("#stockSection").slideDown(); });
+                });
+            </script>
+
             <h2 id="argent">Argent: #</h2>
-            <h2 id="jour">Jour: #</h2> <br/>
-
-            <div id="sliderArgent">
-                <h1 style="font-size:x-large;">Cout du limonade aujourdhui: </h1>
-                <input id="sliderArgentValue" type="range" min="0.50" max="5.00" value="0">
-                <h2 id="argentDisplay">$##</h2>
-            </div> <br/>
-
             <div id="adsContainer">
                 <h1 style="font-size:x-large;">Choisissez l'advertisement du jour:</h1>
 
@@ -66,6 +75,24 @@
                 </select>
 
             </div>
+
+            <h2 id="jour">Jour: #</h2> <br/>
+
+            <section id="menuSection">
+
+                <div id="sliderArgent">
+                    <h3 style="font-size:x-large;">Cout du limonade aujourdhui: </h3>
+                    <input id="sliderArgentValue" type="range" min="0.50" max="5.00" value="0"> <h2 id="argentDisplay">$##</h2>
+                </div> <br/>
+
+            </section>
+            <section id="stockSection" style="display:none">
+
+            </section>
+            <section id="upgradesSection" style="display:none">
+
+            </section>
+            
 
         </section> <br/>
 
@@ -82,9 +109,6 @@
     </footer>
     
     <!--onclick='$(this).remove();augmenterScore();'-->
-
-    <script src="jquery-3.7.1.min.js" charset="utf-8"></script>
-    <script src="main.js" charset="utf-8"></script>
 
 </body>
 
