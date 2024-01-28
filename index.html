@@ -56,7 +56,7 @@
                 <input id="stock" type="button" value="Stock"/>
             </div>
 
-            <script> <!-- The javascript specifically for the buttons -->
+            <script> // The javascript specifically for the buttons
                 $(document).ready(function() {
                     $("#menu").click(function() { $("#menuSection").slideDown(); $("#upgradesSection").hide(); $("#stockSection").hide(); });
                     $("#upgrades").click(function() { $("#menuSection").hide(); $("#upgradesSection").slideDown(); $("#stockSection").hide(); });
@@ -65,27 +65,62 @@
             </script>
 
             <h2 id="argent">Argent: #</h2>
-            <div id="adsContainer">
-                <h1 style="font-size:x-large;">Choisissez l'advertisement du jour:</h1>
 
-                <select id="ads">
-                    <option value="15">$100 for +15% boost</option>
-                    <option value="10">$75 for +10% boost</option>
-                    <option value="5">$50 for +5% boost</option>
-                </select>
-
-            </div>
+                <h1 id="adsContainer" style="font-size:x-large;">Choisissez l'advertisement du jour:
+                    <select style="margin-top: -50px; font-size: 100%" id="ads">
+                        <option value="15">$100 for +15% boost</option>
+                        <option value="10">$75 for +10% boost</option>
+                        <option value="5">$50 for +5% boost</option>
+                    </select>
+                </h1>
 
             <h2 id="jour">Jour: #</h2> <br/>
 
             <section id="menuSection">
 
-                <div id="sliderArgent">
-                    <h3 style="font-size:x-large;">Cout du limonade aujourdhui: </h3>
-                    <input id="sliderArgentValue" type="range" min="0.50" max="5.00" value="0"> <h2 id="argentDisplay">$##</h2>
-                </div> <br/>
+                <h3 id="sliderLemonade" style="font-size:x-large;">Cout de limonade:<!-- VALUES ARE IN CENTS TO BE DIVIDED TO DOLLARS -->
+                    <input id="sliderLemonadeValue" type="range" min="50" max="500" value="0"> <h2 id="lemonadePrice">$0</h2>
+                </h3>
+                <h3 id="sliderIce" style="font-size:x-large;">Cout de glacons:
+                    <input id="sliderIceValue" type="range" min="10" max="100" value="0"> <h2 id="icePrice">$0</h2>
+                </h3>
+                <h3 id="sliderSugar" style="font-size:x-large;">Cout du sucre:
+                    <input id="sliderSugarValue" type="range" min="25" max="200" value="0"> <h2 id="sugarPrice">$0</h2>
+                </h3>
+                <h3 id="sliderX" style="font-size:x-large;">Cout du X:
+                    <input id="sliderXValue" type="range" min="50" max="500" value="0"> <h2 id="XPrice">$0</h2>
+                </h3> <br/>
+
+                <script> // JAVASCRIPT TO DISPLAY VALUE OF SLIDERS ONLY
+                    sliderL = $("#sliderLemonadeValue") ; sliderL.on("input", function () {changeSliderVal("#sliderLemonadeValue","#lemonadePrice")});
+                    sliderI = $("#sliderIceValue") ; sliderI.on("input", function () {changeSliderVal("#sliderIceValue","#icePrice")});
+                    sliderS = $("#sliderSugarValue") ; sliderS.on("input", function () {changeSliderVal("#sliderSugarValue","#sugarPrice")});
+                    sliderX = $("#sliderXValue") ; sliderX.on("input", function () {changeSliderVal("#sliderXValue","#XPrice")});
+
+                    priceL = $("#lemonadePrice")
+                    priceI = $("#icePrice")
+                    priceS = $("#sugarPrice")
+                    priceX = $("#XPrice")
+
+                    function changeSliderVal(slider,price) {
+                        if (slider === "#sliderLemonadeValue" || slider === "#sliderXValue") {
+                            val = Math.round(($(slider).val() / 100)*2) / 2
+                            $(price).html("$"+val)
+                        }
+                        else if (slider === "#sliderIceValue") {
+                            val = Math.round(($(slider).val() / 100)*10) / 10
+                            $(price).html("$"+val)
+                        }
+                        else if (slider === "#sliderSugarValue") {
+                            val = Math.round(($(slider).val() / 100)*4) / 4
+                            $(price).html("$"+val)
+                        }
+                        
+                    }
+                </script>
 
             </section>
+
             <section id="stockSection" style="display:none">
 
             </section>
