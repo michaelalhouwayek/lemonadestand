@@ -1,4 +1,3 @@
-
 function randint(min, max) {
   var alea = min + Math.floor(Math.random() * (max - min + 1));
   //console.log(alea);
@@ -9,6 +8,17 @@ meteo = randint(1,5) // 1 is snowy ; 2 is stormy ; 3 is rainy ; 4 is cloudy ; 5 
 previousMeteo = "";
 temperature = null;
 
+money = 0 ; jour = 0
+const moneyHtml = $("#argent")
+const jourHtml = $("#jour")
+
+function updateJour() {
+  jourHtml.html("Jour: "+jour)
+}
+function updateMoney() {
+  moneyHtml.html("Argent: $"+money)
+}
+updateJour() ; updateMoney()
 
 function setMeteo(meteo) {
   $(previousMeteo).hide();
@@ -34,6 +44,7 @@ function setMeteo(meteo) {
     $("#soleil").show() ; previousMeteo = "#soleil";
   }
 }
+setMeteo(meteo)
 
 function CustomersPerday(Customers){
   customers = temperature*0.5
@@ -46,7 +57,7 @@ function customerMove(){
 
 function lancerJeu() {
   $("#startGame").attr("disabled", "disabled");
-  setMeteo(meteo);
+  setMeteo(meteo) ; updateJour() ; updateMoney()
 }
 
 function ConfirmerAchat() {
