@@ -43,11 +43,11 @@
     
             </div>
 
+            <img id="customer1" src="./Images/route.png" style="display: none;"/>
             <img id="lemonade_stand" src='Images/stand.png'/>
             <img id="adstand" src="Images/panneau_publicite.png"/>
 
         </div> <br/>
-
         <section id="controlleur">
 
             <div id="controlSections">
@@ -75,7 +75,7 @@
                 </h1>
 
             <h2 id="jour">Jour: #</h2> <br/>
-
+                
             <section id="menuSection">
 
                 <h3 id="sliderLemonade" style="font-size:x-large;">Cout de limonade:<!-- VALUES ARE IN CENTS TO BE DIVIDED TO DOLLARS -->
@@ -123,10 +123,10 @@
 
             <section id="stockSection" style="display:none">
                 <h3 id="titre1" style="font-size:x-large;">Stock a acheter:
-                    <input id=confirmerStock type="button" value="Confirmer Achat" /><h2 id="titre2">Votre stock | Prix d'un item</h2>
+                    <input id="confirmerStock" type="button" value="Confirmer Achat" onclick="ConfirmerAchat(); return false;"/><h2 id="titre2">Votre stock | Prix d'un item</h2>
                 </h3>
                 <h3 id="numLemonade" style="font-size:x-large;">Stock de limonade:
-                    <input id="numLemonadeValue" type="number" min="0" max="500" value="0"> <h2 id="lemonadeStock">0 | $1</h2>
+                    <input id="numLemonadeValue" type="number" min="0" max="500" value="0"> <h2 id="lemonadeStock">0 | $1.00</h2>
                 </h3>
                 <h3 id="numIce" style="font-size:x-large;">Stock de glacons:
                     <input id="numIceValue" type="number" min="0" max="100" value="0"> <h2 id="iceStock">0 | $0.25 </h2>
@@ -135,7 +135,7 @@
                     <input id="numSugarValue" type="number" min="0" max="200" value="0"> <h2 id="sugarStock">0 | $0.50</h2>
                 </h3>
                 <h3 id="numX" style="font-size:x-large;">Stock du X:
-                    <input id="numXValue" type="number" min="0" max="500" value="0"> <h2 id="XStock">0 | $0</h2>
+                    <input id="numXValue" type="number" min="0" max="500" value="0"> <h2 id="XStock">0 | $0.00</h2>
                 </h3> <br/>
             </section>
             <section id="upgradesSection" style="display:none">

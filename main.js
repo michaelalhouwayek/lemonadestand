@@ -9,6 +9,7 @@ meteo = randint(1,5) // 1 is snowy ; 2 is stormy ; 3 is rainy ; 4 is cloudy ; 5 
 previousMeteo = "";
 temperature = null;
 
+
 function setMeteo(meteo) {
   $(previousMeteo).hide();
 
@@ -34,13 +35,31 @@ function setMeteo(meteo) {
   }
 }
 
+function CustomersPerday(Customers){
+  customers = temperature*0.5
+}
+
+function customerMove(){
+  Customer1= $("#customer1")
+  Customer1.css("","")
+} 
+
 function lancerJeu() {
   $("#startGame").attr("disabled", "disabled");
   setMeteo(meteo);
 }
 
-/*
-function changerArgent(amount) {
-  argent = $("#argent");
-  argent.text() change etc
-} */
+function ConfirmerAchat() {
+  ice = $("#numIceValue").val()
+  lemonade = $("#numIceValue").val()
+  sugar = $("#numIceValue").val()
+  lemonade = $("#numIceValue").val()
+  
+  confirmer = $("#confirmerStock")
+  
+  htmlIce = $("#iceStock")
+  htmlLemonade = $("#lemonadeStock")
+  htmlSugar = $("#sugarStock")
+  htmlX = $("#XStock")
+   
+}

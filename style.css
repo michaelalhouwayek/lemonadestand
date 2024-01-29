@@ -83,7 +83,11 @@ footer {
     height: 65%;
     bottom: 0%;
 }
-
+#customer {
+    position: absolute;
+    margin-left: 0px;
+    
+}
 #adstand {
     margin-bottom: 80px;
     width: 8%;
