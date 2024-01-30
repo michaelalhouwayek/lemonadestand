@@ -26,7 +26,7 @@ header {
 
 /*cursor: pointer;*/
 
-section,footer,#menu,#stock,#upgrades {
+section,footer,#menu,#stock,#upgrades,#upgrade1,#upgrade2,#upgrade2Image,#upgrade1Image {
     /*display: inline-block;*/
     vertical-align: middle;
     border: solid;
@@ -142,11 +142,11 @@ footer {
 
 #menuSection,#stockSection,#upgradesSection {display: flex; flex-direction: column; align-items: flex-start;}
 
-#sliderSugar,#sliderIce,#sliderLemonade,#sliderX { margin-top: 30px; margin-left:20px;}
-#lemonadePrice,#icePrice,#sugarPrice,#XPrice {margin-left:800px; margin-top:-30px;}
+#sliderSugar,#sliderIce,#sliderLemonade,#sliderSlice { margin-top: 30px; margin-left:20px;}
+#lemonadePrice,#icePrice,#sugarPrice,#slicePrice {margin-left:800px; margin-top:-30px;}
 
 /* SLIDERS CUSTOMIZATIONS */
-#sliderSugarValue ,#sliderIceValue ,#sliderLemonadeValue ,#sliderXValue {
+#sliderSugarValue, #sliderIceValue, #sliderLemonadeValue, #sliderSliceValue {
     -webkit-appearance: none;
     width: 500px;
     height: 24px;
@@ -154,12 +154,12 @@ footer {
     background: #d3d3d3;
     opacity: 0.7;
 }
-#sliderSugarValue:hover ,#sliderIceValue:hover ,#sliderLemonadeValue:hover ,#sliderXValue:hover, #confirmerStock:hover {opacity: 1;}
+#sliderSugarValue:hover ,#sliderIceValue:hover ,#sliderLemonadeValue:hover ,#sliderSliceValue:hover, #confirmerStock:hover, #upgrade1Button:hover, #upgrade2Button:hover {opacity: 1;}
 #sliderSugarValue::-webkit-slider-thumb {background: url("./Images/Ingredients/Sugar.png"); background-size: 115%;}
 #sliderIceValue::-webkit-slider-thumb {background: url("./Images/Ingredients/Ice.png"); background-size: 122%;}
 #sliderLemonadeValue::-webkit-slider-thumb {background: url("./Images/Ingredients/lemon.png"); background-size: 110%;}
-#sliderXValue::-webkit-slider-thumb {background: url("./Images/Ingredients/lemon.png"); background-size: 110%;}
-#sliderSugarValue::-webkit-slider-thumb,#sliderIceValue::-webkit-slider-thumb,#sliderLemonadeValue::-webkit-slider-thumb,#sliderXValue::-webkit-slider-thumb {
+#sliderSliceValue::-webkit-slider-thumb {background: url("./Images/Ingredients/lemon.png"); background-size: 110%;}
+#sliderSugarValue::-webkit-slider-thumb,#sliderIceValue::-webkit-slider-thumb,#sliderLemonadeValue::-webkit-slider-thumb,#sliderSliceValue::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 40px;
     height: 40px;;
@@ -168,7 +168,7 @@ footer {
 
 /* END OF SLIDERS CUSTOMIZATIONS */
 
-#numSugarValue ,#numIceValue ,#numLemonadeValue ,#numXValue {
+#numSugarValue ,#numIceValue ,#numLemonadeValue ,#numSliceValue {
     -webkit-appearance: none;
     width: 100px;
     height: 24px;
@@ -178,9 +178,21 @@ footer {
     background: #d3d3d3;
     opacity: 0.7;
 }
-#confirmerStock {-webkit-appearance: none; font-size: medium; border-radius: 5px; background: #d3d3d3; opacity: 0.7; color:black;}
-#titre1,#numSugar,#numIce,#numLemonade,#numX { margin-top: 18px; margin-left:20px;}
-#titre2,#lemonadeStock,#iceStock,#sugarStock,#XStock {margin-left:500px; margin-top:-25px;}
+
+#upgrade1,#upgrade2 {
+    border-color: rgba(255,165,0,.5);
+    width: 90%;
+}
+
+#upgrade1Image, #upgrade2Image {
+    width: 135px;
+    border-color: rgba(255,165,0,.5);
+    float:left;
+}
+
+#confirmerStock,#upgrade1Button,#upgrade2Button {-webkit-appearance: none; font-size: medium; border-radius: 5px; background: #d3d3d3; opacity: 0.7; color:black;}
+#titre1,#numSugar,#numIce,#numLemonade,#numSlice { margin-top: 18px; margin-left:20px;}
+#titre2,#lemonadeStock,#iceStock,#sugarStock,#sliceStock {margin-left:500px; margin-top:-25px;}
 
 #argent {float:left; margin-left: 5px; margin-top: 5px;}
 #jour {float:right; margin-right: 7px; margin-top: -27px;}

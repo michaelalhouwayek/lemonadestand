@@ -60,7 +60,7 @@ function lancerJeu() {
   setMeteo(meteo) ; updateJour() ; updateMoney()
 }
 
-function ConfirmerAchat() {
+function ConfirmerAchatStock() {
   ice = $("#numIceValue").val()
   lemonade = $("#numIceValue").val()
   sugar = $("#numIceValue").val()
@@ -71,6 +71,9 @@ function ConfirmerAchat() {
   htmlIce = $("#iceStock")
   htmlLemonade = $("#lemonadeStock")
   htmlSugar = $("#sugarStock")
-  htmlX = $("#XStock")
-   
+  htmlX = $("#XStock")  
+}
+
+function ConfirmerAchatUpgrades() {
+  alert("prompted")
 }
