@@ -22,7 +22,7 @@
             Metéo : <span id="Meteo">0</span>
         </div>
 
-        <input id="startGame" type="button" value="Démarrer le jeu" onclick="lancerJeu();" />
+        <input id="startGame" type="button" value="Démarrer le jeu" onclick="demarrerJournee();" />
 
     </section> <br/>
 
@@ -90,36 +90,6 @@
                     <input id="sliderSliceValue" type="range" min="50" max="500" value="0"> <h2 id="slicePrice">$0</h2>
                 </h3> <br/>
 
-                <script> // JAVASCRIPT TO DISPLAY VALUE OF SLIDERS ONLY
-                    sliderL = $("#sliderLemonadeValue") ; sliderL.on("input", function () {changeSliderVal("#sliderLemonadeValue","#lemonadePrice")});
-                    sliderI = $("#sliderIceValue") ; sliderI.on("input", function () {changeSliderVal("#sliderIceValue","#icePrice")});
-                    sliderS = $("#sliderSugarValue") ; sliderS.on("input", function () {changeSliderVal("#sliderSugarValue","#sugarPrice")});
-                    sliderSlice = $("#sliderSliceValue") ; sliderSlice.on("input", function () {changeSliderVal("#sliderSliceValue","#slicePrice")});
-
-                    priceL = $("#lemonadePrice")
-                    priceI = $("#icePrice")
-                    priceS = $("#sugarPrice")
-                    priceSlice = $("#slicePrice")
-
-                    function changeSliderVal(slider,price) {
-                        if (slider === "#sliderLemonadeValue") {
-                            val = Math.round(($(slider).val() / 100)*2) / 2
-                            $(price).html("$"+val)
-                        }
-                        else if (slider === "#sliderIceValue") {
-                            val = Math.round(($(slider).val() / 100)*10) / 10
-                            $(price).html("$"+val)
-                        }
-                        else if (slider === "#sliderSugarValue") {
-                            val = Math.round(($(slider).val() / 100)*4) / 4
-                            $(price).html("$"+val)
-                        }
-                        else if (slider === "#sliderSliceValue") {
-                            val = Math.round(($(slider).val() / 100)*4) / 4
-                            $(price).html("$"+val)
-                        }}
-                </script>
-
             </section>
 
             <section id="stockSection" style="display:none">
@@ -143,12 +113,12 @@
             <section id="upgradesSection" style="display:none">
                 <div id="upgrade1" style="font-size:x-large;">
                     <img id="upgrade1Image" src="./Images/Upgrades/upgrade1.png"> 
-                    <h1>Upgrade 1: Permanent Weekly Weather Forecast : $100 <input id="upgrade1Button" type="button" value="Confirmer Achat" style="padding:2.5px 5px" onclick="ConfirmerAchatUpgrades(); return false;"/></h1>
+                    <h1 id="upg1Title">Upgrade 1: Permanent Weekly Weather Forecast : $50 <input id="upgrade1Button" type="button" value="Acheter" style="padding:2.5px 5px" onclick="ConfirmerAchatUpgrades(1); return false;"/></h1>
                     <p style="font-size:large">Gain a permanent view of the upcoming week's weather forecast so you can preplan your costs and stock purchases ahead of time, and grow your business smoother!</p>
                 </div>
                 <div id="upgrade1" style="font-size:x-large;">
                     <img id="upgrade1Image" src="./Images/Upgrades/upgrade1.png">
-                    <h1>Upgrade 2: Something else : $100 <input id="upgrade1Button" type="button" value="Confirmer Achat" style="padding:2.5px 5px" onclick="ConfirmerAchatUpgrades(); return false;"/></h1>
+                    <h1 id="upg2Title">Upgrade 2: Something else : $100 <input id="upgrade1Button" type="button" value="Acheter" style="padding:2.5px 5px" onclick="ConfirmerAchatUpgrades(2); return false;"/></h1>
                     <p style="font-size:large">Placeholder x Placeholder x Placeholder x Placeholder x Placeholder x Placeholder x Placeholder x Placeholder x Placeholder x   </p>
                 </div> <br/>
             </section>
