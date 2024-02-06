@@ -28,6 +28,10 @@ upgrade1Owned = false ; upgrade2Owned = false
 upg1But = $("#upgrade1Button") ; upg2But = $("#upgrade2Button")
 upg1Title = $("#upg1Title") ; upg2Title = $("#upg2Title")
 //
+// ADS VARIABLES
+adInput = $("#ads") ; adInput.on("input", function () {ConfirmerAchatAdvert()}) // 0 : pick, 5: +5% for $50, 10: 10% for $75, 15: 15% for $15
+adsValue = 0
+//
 // WEATHER VARIABLES //
 meteo = randint(1,5) // 1 is snowy ; 2 is stormy ; 3 is rainy ; 4 is cloudy ; 5 is sunny
 previousMeteo = "";
@@ -133,6 +137,17 @@ function ConfirmerAchatUpgrades(upgradeNum) {
     upg2Title.html("Upgrade 2: Something else : ✅✅✅")
     upgrade2Owned = true ; upgrade2()
   }
+}
+
+function ConfirmerAchatAdvert() {
+  if (adInput.val() == 5) {
+    money -= 50 ; updateMoney()
+  } else if (adInput.val() == 10) {
+
+  } else if (adInput.val() == 15) {
+
+  } else {adsVal = 0}
+  adsVal = adInput.val()
 }
 
 function upgrade1() {
