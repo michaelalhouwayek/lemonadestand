@@ -30,7 +30,7 @@ upg1Title = $("#upg1Title") ; upg2Title = $("#upg2Title")
 //
 // ADS VARIABLES
 adInput = $("#ads") ; adInput.on("input", function () {ConfirmerAchatAdvert()}) // 0 : pick, 5: +5% for $50, 10: 10% for $75, 15: 15% for $15
-adsValue = 0
+adsValue = 0 ; adsOptionRemove = $("#adsOptionRemove")
 //
 // WEATHER VARIABLES //
 meteo = randint(1,5) // 1 is snowy ; 2 is stormy ; 3 is rainy ; 4 is cloudy ; 5 is sunny
@@ -42,7 +42,7 @@ day = 0
 time_left = 0
 //
 // MONEY AND DAY VARIABLES AND FUNCTIONS //
-money = 1500000 ; jour = 0
+money = 1500 ; jour = 0
 moneyHtml = $("#argent")
 jourHtml = $("#jour")
 
@@ -95,7 +95,8 @@ function demarrerJournee() {
     //customer walk function
     // wait customer's wait time
   }
-  alert("Journee terminee!") ; // $("#startGame").removeAttr("disabled")
+  alert("Journee terminee!") ; $("#startGame").removeAttr("disabled")
+  adInput.removeAttr("disabled") ; adsOptionRemove.css("display","block") ; adInput.val("0")
   //end customer function (it should have while time elft not)
 
 }
@@ -140,14 +141,15 @@ function ConfirmerAchatUpgrades(upgradeNum) {
 }
 
 function ConfirmerAchatAdvert() {
-  if (adInput.val() == 5) {
+  adsOptionRemove.css("display","none")
+  if (adInput.val() == 5 && money >= 50) {
     money -= 50 ; updateMoney()
-  } else if (adInput.val() == 10) {
-
-  } else if (adInput.val() == 15) {
-
+  } else if (adInput.val() == 10 && money >= 75) {
+    money -= 75 ; updateMoney()
+  } else if (adInput.val() == 15 && money >= 100) {
+    money -= 100 ; updateMoney()
   } else {adsVal = 0}
-  adsVal = adInput.val()
+  adsVal = adInput.val() ; adInput.attr("disabled", "disabled");
 }
 
 function upgrade1() {
