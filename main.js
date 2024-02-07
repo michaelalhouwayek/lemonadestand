@@ -96,7 +96,7 @@ function demarrerJournee() {
     // wait customer's wait time
   }
   alert("Journee terminee!") ; $("#startGame").removeAttr("disabled")
-  adInput.removeAttr("disabled") ; adsOptionRemove.css("display","block") ; adInput.val("0")
+  adInput.removeAttr("disabled"); adInput.val("0")
   //end customer function (it should have while time elft not)
 
 }
@@ -141,7 +141,6 @@ function ConfirmerAchatUpgrades(upgradeNum) {
 }
 
 function ConfirmerAchatAdvert() {
-  adsOptionRemove.css("display","none")
   if (adInput.val() == 5 && money >= 50) {
     money -= 50 ; updateMoney()
   } else if (adInput.val() == 10 && money >= 75) {
@@ -149,7 +148,9 @@ function ConfirmerAchatAdvert() {
   } else if (adInput.val() == 15 && money >= 100) {
     money -= 100 ; updateMoney()
   } else {adsVal = 0}
-  adsVal = adInput.val() ; adInput.attr("disabled", "disabled");
+  if (adInput.val() != 0) {
+    adsVal = adInput.val() ; adInput.attr("disabled", "disabled");
+  }
 }
 
 function upgrade1() {
