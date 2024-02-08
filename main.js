@@ -43,6 +43,7 @@ time_left = 0
 //
 // MONEY AND DAY VARIABLES AND FUNCTIONS //
 money = 1500 ; jour = 0
+moneyMultiplier = 1
 moneyHtml = $("#argent")
 jourHtml = $("#jour")
 
@@ -87,16 +88,17 @@ function dayTimer() {
 }
 function demarrerJournee() {
   
-  $("#startGame").attr("disabled", "disabled");
+  $("#startDay").attr("disabled", "disabled");
   jour += 1 ; money += 25
   setMeteo(meteo) ; updateJour() ; updateMoney() ; dayTimer()
 
   while (time_left !== 0) {
+    // calculate revenues x moneyMultiplier variable
     //customer walk function
     // wait customer's wait time
   }
-  alert("Journee terminee!") ; $("#startGame").removeAttr("disabled")
-  adInput.removeAttr("disabled"); adInput.val("0")
+  alert("Journee terminee!") ; $("#startDay").removeAttr("disabled")
+  adInput.removeAttr("disabled"); adInput.val("0") ; moneyMultiplier = 1
   //end customer function (it should have while time elft not)
 
 }
@@ -143,10 +145,13 @@ function ConfirmerAchatUpgrades(upgradeNum) {
 function ConfirmerAchatAdvert() {
   if (adInput.val() == 5 && money >= 50) {
     money -= 50 ; updateMoney()
+    moneyMultiplier = 1.10
   } else if (adInput.val() == 10 && money >= 75) {
     money -= 75 ; updateMoney()
+    moneyMultiplier = 1.25
   } else if (adInput.val() == 15 && money >= 100) {
     money -= 100 ; updateMoney()
+    moneyMultiplier = 1.50
   } else {adsVal = 0}
   if (adInput.val() != 0) {
     adsVal = adInput.val() ; adInput.attr("disabled", "disabled");
