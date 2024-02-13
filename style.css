@@ -48,7 +48,7 @@ footer {
     border:none;
 }
 
-#startGame:hover {background-color: rgb(131, 124, 124);}
+#startDay:hover {background-color: rgb(131, 124, 124);}
 
 #Compteurs {
     display: inline-block;

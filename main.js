@@ -33,14 +33,17 @@ adInput = $("#ads") ; adInput.on("input", function () {ConfirmerAchatAdvert()}) 
 adsValue = 0 ; adsOptionRemove = $("#adsOptionRemove")
 //
 // WEATHER VARIABLES //
-meteo = randint(1,5) // 1 is snowy ; 2 is stormy ; 3 is rainy ; 4 is cloudy ; 5 is sunny
+meteo = null // 1 is snowy ; 2 is stormy ; 3 is rainy ; 4 is cloudy ; 5 is sunny
 previousMeteo = "";
 temperature = null;
 //
-// TIME VARIABLES //
-day = 0
+// TIME VARIABLE //
 time_left = 0
-//
+// CUSTOMER VARIABLES //
+customer1 = null
+customer2 = null
+customer3 = null
+customerMultiplier = 1
 // MONEY AND DAY VARIABLES AND FUNCTIONS //
 money = 1500 ; jour = 0
 moneyMultiplier = 1
@@ -56,62 +59,84 @@ function updateMoney() {
 updateJour() ; updateMoney()
 //
 
-function setMeteo(meteo) {
+function setMeteo() {
+  meteo = randint(1,5)
   $(previousMeteo).hide();
-
   if (meteo === 1) {
     temperature = randint(15,20)
     $("#neige").show() ; previousMeteo = "#neige";
+    customerMultiplier = 0.25
   }
   else if (meteo === 2) {
     temperature = randint(17,22)
     $("#tempete").show() ; previousMeteo = "#tempete";
+    customerMultiplier = 0.50
   }
   else if (meteo === 3) {
     temperature = randint(19,24)
     $("#pluie").show() ; previousMeteo = "#pluie";
+    customerMultiplier = 0.75
   }
   else if (meteo === 4) {
     temperature = randint(22,27)
     $("#nuage").show() ; previousMeteo = "#nuage";
+    customerMultiplier = 1
   }
   else if (meteo === 5) {
     temperature = randint(27,35)
     $("#soleil").show() ; previousMeteo = "#soleil";
+    customerMultiplier = 1.25
   }
 }
-setMeteo(meteo)
 
-function dayTimer() {
-  time_left = 250
-  // wait 1 second then time left -1
-}
 function demarrerJournee() {
-  
   $("#startDay").attr("disabled", "disabled");
-  jour += 1 ; money += 25
-  setMeteo(meteo) ; updateJour() ; updateMoney() ; dayTimer()
+  jour += 1 ; money += 25 ; time_left = 5
+  setMeteo() ; updateJour() ; updateMoney()
 
-  while (time_left !== 0) {
-    // calculate revenues x moneyMultiplier variable
-    //customer walk function
-    // wait customer's wait time
-  }
-  alert("Journee terminee!") ; $("#startDay").removeAttr("disabled")
+  var dayCycle = setInterval(function() {
+    if (time_left == 0) {
+      terminerJournee() ; clearInterval(dayCycle)
+    } else {
+      //customerSpawn()
+      time_left -= 1 ; $("#startDay").val("il reste: "+time_left+"s dans la journée "+jour)
+    }
+    
+  }, 1000)
+}
+
+function terminerJournee() {
+  alert("Journee terminee!") ; $("#startDay").removeAttr("disabled") ; $("#startDay").val("Demarrer la journée "+(jour+1)+"!")
   adInput.removeAttr("disabled"); adInput.val("0") ; moneyMultiplier = 1
   //end customer function (it should have while time elft not)
-
 }
 
-function CustomersPerday(Customers){
-  customers = temperature*0.5
+function customerPromptPurchase() {
+  if (totalIceStock>0){
+    
+    money += icePrice*moneyMultiplier
+  }
+  if (totalLemonadeStock>0){
+    money += lemonadePrice*moneyMultiplier
+  }
+  if (totalSliceStock>0){
+    money += slicePrice*moneyMultiplier
+  }
+  if (totalSugarStock>0){
+    money += sugarPrice*moneyMultiplier
+  }
 }
 
-function customerMove(){
-  Customer1= $("#customer1")
-  current_margin = 0
-  Customer1.css("margin-left",current_margin)
-  current_margin += 1
+function customerSpawn(){
+  customerNum = randint(1,3)
+  customerSpawned = (customer+customerNum)
+  console.log(customerToSpawn)
+  //current_margin = customerSpawned.css("margin-left")
+  //Customer1.css("margin-left",current_margin)
+  //current_margin += 1
+  if (current_margin = 35) {
+    customerPromptPurchase()
+  }
   // smth like this w/a while loop
 }
 
