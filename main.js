@@ -113,8 +113,9 @@ function terminerJournee() {
 
 function customerPromptPurchase() {
   if (totalIceStock>0){
-    
-    money += icePrice*moneyMultiplier
+    if (meteo != 1 && meteo != 2) {
+      money += icePrice*moneyMultiplier
+    }
   }
   if (totalLemonadeStock>0){
     money += lemonadePrice*moneyMultiplier
@@ -127,7 +128,7 @@ function customerPromptPurchase() {
   }
 }
 
-function customerSpawn(){
+function customerSpawn() {
   customerNum = randint(1,3)
   customerSpawned = (customer+customerNum)
   console.log(customerToSpawn)
