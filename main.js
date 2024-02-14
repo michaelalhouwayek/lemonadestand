@@ -36,6 +36,7 @@ adsValue = 0 ; adsOptionRemove = $("#adsOptionRemove")
 meteo = null // 1 is snowy ; 2 is stormy ; 3 is rainy ; 4 is cloudy ; 5 is sunny
 previousMeteo = "";
 temperature = null;
+weatherMultiplier = 1
 //
 // TIME VARIABLE //
 time_left = 0
@@ -43,7 +44,7 @@ time_left = 0
 customer1 = null
 customer2 = null
 customer3 = null
-customerMultiplier = 1
+customerMultiplier = 3
 // MONEY AND DAY VARIABLES AND FUNCTIONS //
 money = 1500 ; jour = 0
 moneyMultiplier = 1
@@ -54,10 +55,10 @@ function updateJour() {
   jourHtml.html("Jour: "+jour)
 }
 function updateMoney() {
-  moneyHtml.html("Argent: $"+money)
+  moneyHtml.html("Argent: $"+money+" || x"+weatherMultiplier)
 }
 updateJour() ; updateMoney()
-//
+///////
 
 function setMeteo() {
   meteo = randint(1,5)
@@ -65,27 +66,32 @@ function setMeteo() {
   if (meteo === 1) {
     temperature = randint(15,20)
     $("#neige").show() ; previousMeteo = "#neige";
-    customerMultiplier = 0.25
+    customerMultiplier = 7
+    weatherMultiplier = 0.65
   }
   else if (meteo === 2) {
     temperature = randint(17,22)
     $("#tempete").show() ; previousMeteo = "#tempete";
-    customerMultiplier = 0.50
+    customerMultiplier = 6
+    weatherMultiplier = 0.75
   }
   else if (meteo === 3) {
     temperature = randint(19,24)
     $("#pluie").show() ; previousMeteo = "#pluie";
-    customerMultiplier = 0.75
+    customerMultiplier = 5
+    weatherMultiplier = 0.85
   }
   else if (meteo === 4) {
     temperature = randint(22,27)
     $("#nuage").show() ; previousMeteo = "#nuage";
-    customerMultiplier = 1
+    customerMultiplier = 4
+    weatherMultiplier = 1
   }
   else if (meteo === 5) {
     temperature = randint(27,35)
     $("#soleil").show() ; previousMeteo = "#soleil";
-    customerMultiplier = 1.25
+    customerMultiplier = 3
+    weatherMultiplier = 1.15
   }
 }
 
@@ -98,7 +104,10 @@ function demarrerJournee() {
     if (time_left == 0) {
       terminerJournee() ; clearInterval(dayCycle)
     } else {
-      //customerSpawn()
+      if (randint(1,customerMultiplier) == 3) {
+        customerSpawn()
+        console.log("a customer has spawned")
+      }
       time_left -= 1 ; $("#startDay").val("il reste: "+time_left+"s dans la journée "+jour)
     }
     
@@ -107,38 +116,39 @@ function demarrerJournee() {
 
 function terminerJournee() {
   alert("Journee terminee!") ; $("#startDay").removeAttr("disabled") ; $("#startDay").val("Demarrer la journée "+(jour+1)+"!")
-  adInput.removeAttr("disabled"); adInput.val("0") ; moneyMultiplier = 1
+  adInput.removeAttr("disabled"); adInput.val("0") ; moneyMultiplier = 1 ; weatherMultiplier = 1 ; customerMultiplier = 3
   //end customer function (it should have while time elft not)
 }
 
 function customerPromptPurchase() {
-  if (totalIceStock>0){
-    if (meteo != 1 && meteo != 2) {
-      money += icePrice*moneyMultiplier
-    }
+  if (totalIceStock>0) {
+      money += (icePrice*weatherMultiplier)*moneyMultiplier
   }
   if (totalLemonadeStock>0){
-    money += lemonadePrice*moneyMultiplier
+    money += (lemonadePrice*weatherMultiplier)*moneyMultiplier
   }
   if (totalSliceStock>0){
-    money += slicePrice*moneyMultiplier
+    money += (slicePrice*weatherMultiplier)*moneyMultiplier
   }
   if (totalSugarStock>0){
-    money += sugarPrice*moneyMultiplier
+    money += (sugarPrice*weatherMultiplier)*moneyMultiplier
   }
 }
 
 function customerSpawn() {
-  customerNum = randint(1,3)
-  customerSpawned = (customer+customerNum)
-  console.log(customerToSpawn)
-  //current_margin = customerSpawned.css("margin-left")
-  //Customer1.css("margin-left",current_margin)
-  //current_margin += 1
-  if (current_margin = 35) {
-    customerPromptPurchase()
-  }
-  // smth like this w/a while loop
+  destination = $("#lemonade_stand").css("margin-left")
+  customer = $("#customer"+randint(1,3))
+  customer.css("display","block")
+  current_margin = customer.css("margin-left")
+  
+  var customerWalking = setInterval(function() {
+    if (current_margin != destination) {
+      console.log("customer walking to stand")
+    } else {
+      customerPromptPurchase()
+      clearInterval(customerWalking)
+    }
+  }, 100 );
 }
 
 function ConfirmerAchatStock() { 
