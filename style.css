@@ -190,6 +190,14 @@ footer {
     float:left;
 }
 
+#customer1,#customer2,#customer3,#customer4,#customer5,#customer6 {
+    display: none;
+    width: 110px;
+    margin-left: -320px;
+    margin-top: 330px;
+    position: absolute;
+}
+
 #confirmerStock,#upgrade1Button,#upgrade2Button {-webkit-appearance: none; font-size: medium; border-radius: 5px; background: #d3d3d3; opacity: 0.7; color:black;}
 #titre1,#numSugar,#numIce,#numLemonade,#numSlice { margin-top: 18px; margin-left:20px;}
 #titre2,#lemonadeStock,#iceStock,#sugarStock,#sliceStock {margin-left:500px; margin-top:-25px;}

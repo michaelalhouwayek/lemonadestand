@@ -40,10 +40,6 @@ weatherMultiplier = 1
 //
 // TIME VARIABLE //
 time_left = 0
-// CUSTOMER VARIABLES //
-customer1 = null
-customer2 = null
-customer3 = null
 customerMultiplier = 3
 // MONEY AND DAY VARIABLES AND FUNCTIONS //
 money = 1500 ; jour = 0
@@ -94,7 +90,7 @@ function setMeteo() {
     weatherMultiplier = 1.15
   }
 }
-
+customerWalking = false
 function demarrerJournee() {
   $("#startDay").attr("disabled", "disabled");
   jour += 1 ; money += 25 ; time_left = 5
@@ -104,7 +100,7 @@ function demarrerJournee() {
     if (time_left == 0) {
       terminerJournee() ; clearInterval(dayCycle)
     } else {
-      if (randint(1,customerMultiplier) == 3) {
+      if (randint(1,customerMultiplier) == 3 && customerWalking == false) {
         customerSpawn()
         console.log("a customer has spawned")
       }
@@ -136,16 +132,19 @@ function customerPromptPurchase() {
 }
 
 function customerSpawn() {
-  destination = $("#lemonade_stand").css("margin-left")
-  customer = $("#customer"+randint(1,3))
+  customerWalking = true
+  destination = ($("#lemonade_stand").css("margin-left"))+4
+  customer = $("#customer"+randint(1,6))
   customer.css("display","block")
   current_margin = customer.css("margin-left")
+  console.log(customer+" needs to get from "+current_margin+" to "+destination)
   
   var customerWalking = setInterval(function() {
-    if (current_margin != destination) {
-      console.log("customer walking to stand")
+    if (current_margin != destination && time_left != 0) {
+      
     } else {
       customerPromptPurchase()
+      customerWalking = false
       clearInterval(customerWalking)
     }
   }, 100 );
