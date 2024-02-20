@@ -6,10 +6,10 @@ function randint(min, max) {
 }
 //
 // SLIDER VARAIBLES //
-sliderL = $("#sliderLemonadeValue") ; sliderL.on("input", function () {changeSliderVal("#sliderLemonadeValue","#lemonadePrice")});
-sliderI = $("#sliderIceValue") ; sliderI.on("input", function () {changeSliderVal("#sliderIceValue","#icePrice")});
-sliderS = $("#sliderSugarValue") ; sliderS.on("input", function () {changeSliderVal("#sliderSugarValue","#sugarPrice")});
-sliderSlice = $("#sliderSliceValue") ; sliderSlice.on("input", function () {changeSliderVal("#sliderSliceValue","#slicePrice")});
+sliderL = $("#sliderLemonadeValue") ; sliderL.on("input", function () {changeSliderVal("#sliderLemonadeValue","#lemonadePrice")}); changeSliderVal("#sliderLemonadeValue","#lemonadePrice")
+sliderI = $("#sliderIceValue") ; sliderI.on("input", function () {changeSliderVal("#sliderIceValue","#icePrice")}); changeSliderVal("#sliderIceValue","#icePrice")
+sliderS = $("#sliderSugarValue") ; sliderS.on("input", function () {changeSliderVal("#sliderSugarValue","#sugarPrice")}); changeSliderVal("#sliderSugarValue","#sugarPrice")
+sliderSlice = $("#sliderSliceValue") ; sliderSlice.on("input", function () {changeSliderVal("#sliderSliceValue","#slicePrice")}); changeSliderVal("#sliderSliceValue","#slicePrice")
 priceL = $("#lemonadePrice") ; priceI = $("#icePrice") ; priceS = $("#sugarPrice") ; priceSlice = $("#slicePrice")
 lemonadePrice = 0 ; icePrice = 0 ; sugarPrice = 0 ; slicePrice = 0
 //
@@ -42,7 +42,7 @@ weatherMultiplier = 1
 time_left = 0
 customerMultiplier = 3
 // MONEY AND DAY VARIABLES AND FUNCTIONS //
-money = 1500 ; jour = 0
+money = 5 ; jour = 0
 moneyMultiplier = 1
 moneyHtml = $("#argent")
 jourHtml = $("#jour")
@@ -93,7 +93,7 @@ function setMeteo() {
 customerWalking = false
 function demarrerJournee() {
   $("#startDay").attr("disabled", "disabled");
-  jour += 1 ; money += 25 ; time_left = 5
+  jour += 1 ; money += 2 ; time_left = 20
   setMeteo() ; updateJour() ; updateMoney()
 
   var dayCycle = setInterval(function() {
@@ -101,7 +101,8 @@ function demarrerJournee() {
       terminerJournee() ; clearInterval(dayCycle)
     } else {
       if (randint(1,customerMultiplier) == 3 && customerWalking == false) {
-        customerSpawn()
+        customerWalking = true
+        customerPromptPurchase() //CHANGE
         console.log("a customer has spawned")
       }
       time_left -= 1 ; $("#startDay").val("il reste: "+time_left+"s dans la journée "+jour)
@@ -112,23 +113,33 @@ function demarrerJournee() {
 
 function terminerJournee() {
   alert("Journee terminee!") ; $("#startDay").removeAttr("disabled") ; $("#startDay").val("Demarrer la journée "+(jour+1)+"!")
-  adInput.removeAttr("disabled"); adInput.val("0") ; moneyMultiplier = 1 ; weatherMultiplier = 1 ; customerMultiplier = 3
+  adInput.removeAttr("disabled"); adInput.val("0") ; adsValue = 0 ; moneyMultiplier = 1 ; weatherMultiplier = 1 ; customerMultiplier = 3
   //end customer function (it should have while time elft not)
 }
 
 function customerPromptPurchase() {
-  if (totalIceStock>0) {
-      money += (icePrice*weatherMultiplier)*moneyMultiplier
+  customerWalking = false
+  if (totalIceStock>0 && meteo != 1 && meteo != 2) {
+    currentPrice = (icePrice*weatherMultiplier)*moneyMultiplier
+    
+    money += currentPrice ; totalIceStock -= 1; htmlIce.html(totalIceStock+" | $0.25")
   }
   if (totalLemonadeStock>0){
-    money += (lemonadePrice*weatherMultiplier)*moneyMultiplier
+    currentPrice = (lemonadePrice*weatherMultiplier)*moneyMultiplier
+
+    money += currentPrice ; totalLemonadeStock -=1 ; htmlLemonade.html(totalLemonadeStock+" | $1.25")
   }
   if (totalSliceStock>0){
-    money += (slicePrice*weatherMultiplier)*moneyMultiplier
+    currentPrice = (slicePrice*weatherMultiplier)*moneyMultiplier
+
+    money += currentPrice ; totalSliceStock -=1 ; htmlSlice.html(totalSliceStock+" | $0.50")
   }
   if (totalSugarStock>0){
-    money += (sugarPrice*weatherMultiplier)*moneyMultiplier
+    currentPrice += (sugarPrice*weatherMultiplier)*moneyMultiplier
+
+    money += currentPrice ; totalSugarStock -=1 ;htmlSugar.html(totalSugarStock+" | $0.50")
   }
+  updateMoney()
 }
 
 function customerSpawn() {
@@ -144,7 +155,6 @@ function customerSpawn() {
       
     } else {
       customerPromptPurchase()
-      customerWalking = false
       clearInterval(customerWalking)
     }
   }, 100 );
@@ -152,11 +162,11 @@ function customerSpawn() {
 
 function ConfirmerAchatStock() { 
 
-  var prixTotal = Number(iceVal.val())*0.25 + Number(lemonadeVal.val())*1.00 + Number(sugarVal.val())*0.50 + Number(sliceVal.val())*0.50
+  var prixTotal = Number(iceVal.val())*0.25 + Number(lemonadeVal.val())*1.25 + Number(sugarVal.val())*0.50 + Number(sliceVal.val())*0.50
   console.log(prixTotal)
   if (prixTotal <= money) {
     totalIceStock += Number(iceVal.val()) ; totalLemonadeStock += Number(lemonadeVal.val()) ; totalSugarStock += Number(sugarVal.val()) ; totalSliceStock += Number(sliceVal.val())
-    htmlIce.html(totalIceStock+" | $0.25") ; htmlLemonade.html(totalLemonadeStock+" | $1.00") ; htmlSugar.html(totalSugarStock+" | $0.50") ; htmlSlice.html(totalSliceStock+" | $0.50")
+    htmlIce.html(totalIceStock+" | $0.25") ; htmlLemonade.html(totalLemonadeStock+" | $1.25") ; htmlSugar.html(totalSugarStock+" | $0.50") ; htmlSlice.html(totalSliceStock+" | $0.50")
     money -= prixTotal ; updateMoney()
     iceVal.val(0) ; lemonadeVal.val(0) ; sugarVal.val(0) ; sliceVal.val(0)
   }
@@ -180,16 +190,16 @@ function ConfirmerAchatUpgrades(upgradeNum) {
 function ConfirmerAchatAdvert() {
   if (adInput.val() == 5 && money >= 50) {
     money -= 50 ; updateMoney()
-    moneyMultiplier = 1.10
+    moneyMultiplier = 1.10 ; adsValue = adInput.val() ; adInput.attr("disabled", "disabled");
   } else if (adInput.val() == 10 && money >= 75) {
     money -= 75 ; updateMoney()
-    moneyMultiplier = 1.25
+    moneyMultiplier = 1.25 ; adsValue = adInput.val() ; adInput.attr("disabled", "disabled");
   } else if (adInput.val() == 15 && money >= 100) {
     money -= 100 ; updateMoney()
-    moneyMultiplier = 1.50
-  } else {adsVal = 0}
-  if (adInput.val() != 0) {
-    adsVal = adInput.val() ; adInput.attr("disabled", "disabled");
+    moneyMultiplier = 1.50 ; adsValue = adInput.val() ; adInput.attr("disabled", "disabled");
+  } else {
+    alert("Pas suffisament d'argent, advertissement pas acheter! ")
+    adInput.val("0")
   }
 }
 
@@ -224,5 +234,5 @@ function changeSliderVal(slider,price) {
     $(price).html("$"+val)
     slicePrice = val
   }
-
 }
+
