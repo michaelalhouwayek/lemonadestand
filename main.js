@@ -142,6 +142,8 @@ function customerPromptPurchase() {
   updateMoney()
 }
 
+
+
 function customerSpawn() {
   customerWalking = true
   destination = ($("#lemonade_stand").css("margin-left"))+4
@@ -217,22 +219,35 @@ function changeSliderVal(slider,price) {
   if (slider === "#sliderLemonadeValue") {
     val = Math.round(($(slider).val() / 100)*2) / 2
     $(price).html("$"+val)
+    if (val == 1|| val ==1.5){weatherMultiplier -= 0.05}
+    if (val == 2.5|| val ==2){weatherMultiplier -= 0.1}
+    if (val == 3|| val ==3.5){weatherMultiplier -= 0.15}
+    if (val == 4|| val ==4.5){weatherMultiplier -= 0.2}
+    if (val == 5){weatherMultiplier -= 0.25}
+
     lemonadePrice = val
   }
   else if (slider === "#sliderIceValue") {
     val = Math.round(($(slider).val() / 100)*10) / 10
     $(price).html("$"+val)
+    if (val >= 0.8 ){weatherMultiplier -= 0.15}
+    if (val >= 0.5 ){weatherMultiplier -= 0.1}
     icePrice = val
   }
   else if (slider === "#sliderSugarValue") {
     val = Math.round(($(slider).val() / 100)*4) / 4
     $(price).html("$"+val)
+    if (val >= 1.5){weatherMultiplier -= 0.15}
+    if (val >= 0.75){weatherMultiplier -= 0.1}
     sugarPrice = val
   }
   else if (slider === "#sliderSliceValue") {
-    val = Math.round(($(slider).val() / 100)*4) / 4
+    val = Math.round(($(slider).val() / 100)*10) / 10
     $(price).html("$"+val)
+    if (val >= 0.5){weatherMultiplier -= 0.1}
     slicePrice = val
   }
+
+
 }
 
