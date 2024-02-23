@@ -114,6 +114,7 @@ function demarrerJournee() {
 function terminerJournee() {
   alert("Journee terminee!") ; $("#startDay").removeAttr("disabled") ; $("#startDay").val("Demarrer la journée "+(jour+1)+"!")
   adInput.removeAttr("disabled"); adInput.val("0") ; adsValue = 0 ; moneyMultiplier = 1 ; weatherMultiplier = 1 ; customerMultiplier = 3
+  updateMoney()
   //end customer function (it should have while time elft not)
 }
 
@@ -179,12 +180,12 @@ function ConfirmerAchatUpgrades(upgradeNum) {
   if (upgradeNum == 1 && 50 <= money) {
     money -= 50 ; updateMoney()
     upg1But.css("display","none")
-    upg1Title.html("Upgrade 1: Permanent Weekly Weather Forecast : ✅✅✅")
+    upg1Title.html("Amélioration 1: Météo Hebdomadaire Permanente! - ✅✅✅")
     upgrade1Owned = true ; upgrade1()
   } else if (upgradeNum == 2 && 100 <= money) {
     money -= 100 ; updateMoney()
     upg2But.css("display","none")
-    upg2Title.html("Upgrade 2: Something else : ✅✅✅")
+    upg2Title.html("Amélioration 2: Fini la mauvaise météo! - ✅✅✅")
     upgrade2Owned = true ; upgrade2()
   }
 }
