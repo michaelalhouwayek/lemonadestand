@@ -59,6 +59,7 @@
                 <input id="menu" type="button" value="Prix du Menu"/>
                 <input id="upgrades" type="button" value="Améliorations"/>
                 <input id="stock" type="button" value="Stock"/>
+                <input id="confirmerTout" type="button" value="Confirmer les parametres: PRIX & STOCK"/>
             </div>
 
             <script> // The javascript specifically for the buttons
@@ -66,6 +67,7 @@
                     $("#menu").click(function() { $("#menuSection").slideDown(); $("#upgradesSection").hide(); $("#stockSection").hide(); });
                     $("#upgrades").click(function() { $("#menuSection").hide(); $("#upgradesSection").slideDown(); $("#stockSection").hide(); });
                     $("#stock").click(function() { $("#menuSection").hide(); $("#upgradesSection").hide(); $("#stockSection").slideDown(); });
+                    $("#confirmerTout").click(function() {disableButtons()});
                 });
             </script>
 
@@ -101,7 +103,7 @@
 
             <section id="stockSection" style="display:none">
                 <h3 id="titre1" style="font-size:x-large;">Stock a acheter:
-                    <input id="confirmerStock" type="button" value="Confirmer Achat" onclick="ConfirmerAchatStock(); return false;"/><h2 id="titre2">Votre stock | Prix d'un item</h2>
+                    <input id="confirmerStock" type="button" value="Confirmer Achat" onclick="ConfirmerAchatStock();"/><h2 id="titre2">Votre stock | Prix d'un item</h2>
                 </h3>
                 <h3 id="numLemonade" style="font-size:x-large;">Stock de limonade:
                     <input id="numLemonadeValue" type="number" min="0" max="500" value="0"> <h2 id="lemonadeStock">0 | $1.25</h2>
@@ -120,12 +122,12 @@
             <section id="upgradesSection" style="display:none">
                 <div id="upgrade1" style="font-size:x-large;">
                     <img id="upgrade1Image" src="./Images/Upgrades/upgrade1.png"> 
-                    <h1 id="upg1Title">Amélioration 1: Météo Hebdomadaire Permanente - $50 <input id="upgrade1Button" type="button" value="Acheter" style="padding:2.5px 5px" onclick="ConfirmerAchatUpgrades(1); return false;"/></h1>
+                    <h1 id="upg1Title">Amélioration 1: Météo Hebdomadaire Permanente - $50 <input id="upgrade1Button" type="button" value="Acheter" style="padding:2.5px 5px" onclick="ConfirmerAchatUpgrades(1); "/></h1>
                     <p style="font-size:large">Bénéficiez d'une vue permanente des prévisions météorologiques de la semaine à venir afin de pouvoir planifier à l'avance vos coûts et vos achats de stocks et développer votre activité plus facilement !</p>
                 </div>
-                <div id="upgrade1" style="font-size:x-large;">
-                    <img id="upgrade1Image" src="./Images/Upgrades/upgrade1.png">
-                    <h1 id="upg2Title">Amélioration 2: Fini la mauvaise météo! - $100<input id="upgrade1Button" type="button" value="Acheter" style="padding:2.5px 5px" onclick="ConfirmerAchatUpgrades(2); return false;"/></h1>
+                <div id="upgrade2" style="font-size:x-large;">
+                    <img id="upgrade2Image" src="./Images/Upgrades/upgrade2.png">
+                    <h1 id="upg2Title">Amélioration 2: Fini la mauvaise météo! - $100 <input id="upgrade2Button" type="button" value="Acheter" style="padding:2.5px 5px" onclick="ConfirmerAchatUpgrades(2); "/></h1>
                     <p style="font-size:large">Fini le mauvais temps ! Vous n'aurez désormais plus que du temps pluvieux, nuageux ou ensoleillé, plus de neige et de tonnerre !</p>
                 </div> <br/>
             </section>
