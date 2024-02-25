@@ -12,6 +12,7 @@ sliderS = $("#sliderSugarValue") ; sliderS.on("input", function () {changeSlider
 sliderSlice = $("#sliderSliceValue") ; sliderSlice.on("input", function () {changeSliderVal("#sliderSliceValue","#slicePrice")}); changeSliderVal("#sliderSliceValue","#slicePrice")
 priceL = $("#lemonadePrice") ; priceI = $("#icePrice") ; priceS = $("#sugarPrice") ; priceSlice = $("#slicePrice")
 lemonadePrice = 0 ; icePrice = 0 ; sugarPrice = 0 ; slicePrice = 0
+lemonadeDJ = false ; iceDJ = false ; sliceDJ = false ; sugarDJ = false ; ingDJhtml = $("#ingDJhtml") /*its actually an input*/
 //
 // STOCK VARIABLES //
 iceVal = $("#numIceValue")
@@ -62,7 +63,6 @@ function updateMoney() {
   } else {
     moneyHtml.html("Argent: $"+money+" || x"+weatherMultiplier)
   }
-  
 }
 updateJour() ; updateMoney()
 ///////
@@ -100,6 +100,22 @@ function setMeteo() {
     weatherMultiplier += 0.15
   }
 }
+
+function IngredientDJ() {
+  lemonadeDJ = false ; iceDJ = false ; sugarDJ = false ; sliceDJ = false
+  ingDJhtml.val("Ingredient du jour (+35%): Aucun")
+  firstRand = randint(1,2)
+  if (firstRand==1) {
+    rand = randint(1,4)
+    if (rand==1) {lemonadeDJ = true ; ingDJhtml.val("Ingredient du jour (+35%): Limonade")}
+    else if (rand==2) {iceDJ = true ; ingDJhtml.val("Ingredient du jour (+35%): Glacons")}
+    else if (rand==3) {sugarDJ = true ; ingDJhtml.val("Ingredient du jour (+35%): Sucre")}
+    else if (rand==4) {sliceDJ = true ; ingDJhtml.val("Ingredient du jour (+35%): Slice")}
+  } else {
+    console.log("Pas d'ingredient spécial aujourd'hui!")
+  }
+} IngredientDJ()
+
 customerWalking = false
 function demarrerJournee() {
   if (confirmedParams == false) {
@@ -125,31 +141,47 @@ function demarrerJournee() {
   }, 1000)
 }
 
+function checkGameOver() {
+  totalStock = totalIceStock + totalLemonadeStock + totalSliceStock + totalSugarStock
+  if (totalStock == 0 && money < iceVarP && money < lemonadeVarP && money < sugarVarP && money < sliceVarP) {
+    alert("Vous avez perdu! Reactualiser la page pour recommencer!") 
+  }
+}
+
 function terminerJournee() {
   alert("Journee terminee!") ; $("#startDay").removeAttr("disabled") ; $("#startDay").val("Demarrer la journée "+(jour+1)+"!")
+  IngredientDJ()
   adInput.removeAttr("disabled"); adInput.val("0") ; adsValue = 0 ; moneyMultiplier = 1 ; weatherMultiplier = 1 ; customerMultiplier = 3
   previousMeteo.hide();
   updateStockPrice(false)
-  enableButtons() ; updateMoney()
+  enableButtons() ; updateMoney() ; checkGameOver()
 }
 
 function customerPromptPurchase() {
   customerWalking = false
-  if (totalIceStock>0 && meteo != 1 && meteo != 2) {
-    currentPrice = (icePrice*weatherMultiplier)*moneyMultiplier
-    money += currentPrice ; totalIceStock -= 1; updateStockPrice(false)
-  }
-  if (totalLemonadeStock>0){
-    currentPrice = (lemonadePrice*weatherMultiplier)*moneyMultiplier
-    money += currentPrice ; totalLemonadeStock -=1 ; updateStockPrice(false)
-  }
-  if (totalSliceStock>0){
-    currentPrice = (slicePrice*weatherMultiplier)*moneyMultiplier
-    money += currentPrice ; totalSliceStock -=1 ; updateStockPrice(false)
-  }
-  if (totalSugarStock>0){
-    currentPrice += (sugarPrice*weatherMultiplier)*moneyMultiplier
-    money += currentPrice ; totalSugarStock -=1 ; updateStockPrice(false)
+  if (totalIceStock==0 && totalLemonadeStock==0 && totalSliceStock==0 && totalSugarStock==0) {
+    money -= 0.05*money
+  } else {
+    if (totalIceStock>0 && meteo != 1 && meteo != 2) {
+      if (iceDJ == true) {currentPrice = ((icePrice*1.35)*moneyMultiplier)*weatherMultiplier
+      } else {currentPrice = (icePrice*moneyMultiplier)*weatherMultiplier}
+      money += currentPrice ; totalIceStock -= 1; updateStockPrice(false)
+    }
+    if (totalLemonadeStock>0){
+      if (lemonadeDJ == true) {currentPrice = ((lemonadePrice*1.35)*moneyMultiplier)*weatherMultiplier
+      } else {currentPrice = (lemonadePrice*moneyMultiplier)*weatherMultiplier}
+      money += currentPrice ; totalLemonadeStock -=1 ; updateStockPrice(false)
+    }
+    if (totalSliceStock>0){
+      if (sliceDJ == true) {currentPrice = ((slicePrice*1.35)*moneyMultiplier)*weatherMultiplier
+      } else {currentPrice = (slicePrice*moneyMultiplier)*weatherMultiplier}
+      money += currentPrice ; totalSliceStock -=1 ; updateStockPrice(false)
+    }
+    if (totalSugarStock>0){
+      if (sugarDJ == true) {currentPrice += ((sugarPrice*1.35)*moneyMultiplier)*weatherMultiplier
+      } else {currentPrice += (sugarPrice*moneyMultiplier)*weatherMultiplier}
+      money += currentPrice ; totalSugarStock -=1 ; updateStockPrice(false)
+    }
   }
   updateMoney()
 }
@@ -263,10 +295,10 @@ function upgrade2() {
 }
 
 function applySliderMultiplier() {
-  if (1.5 <= lemonadePrice <= 2) {weatherMultiplier -= 0.05
-  } else if (2.5 <= lemonadePrice <= 3) {weatherMultiplier -= 0.1
-  } else if (3.5 <= lemonadePrice <= 4) {weatherMultiplier -= 0.15
-  } else if (4.5 <= lemonadePrice <= 5) {weatherMultiplier -= 0.2
+  if (1.5 <= lemonadePrice && lemonadePrice <= 2) {weatherMultiplier -= 0.05
+  } else if (2.5 <= lemonadePrice && lemonadePrice <= 3) {weatherMultiplier -= 0.1
+  } else if (3.5 <= lemonadePrice && lemonadePrice <= 4) {weatherMultiplier -= 0.15
+  } else if (4.5 <= lemonadePrice && lemonadePrice <= 5) {weatherMultiplier -= 0.2
   }
 
   if (icePrice >= 0.8 ){weatherMultiplier -= 0.15

@@ -211,3 +211,11 @@ input[type=button] {
     padding: 10px 20px;
     background-color: white;
 }
+
+#ingDJhtml {
+    background:none;
+    color: black;
+    padding: 5px 10px;
+    font-size: x-large;
+    border-width: 0px;
+}
