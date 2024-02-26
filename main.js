@@ -47,7 +47,7 @@ neige = $("#neige"); tempete = $("#tempete"); pluie = $("#pluie"); nuage = $("#n
 time_left = 0
 customerMultiplier = 3
 // MONEY AND DAY VARIABLES AND FUNCTIONS //
-money = 5000 ; jour = 0 ; addby = parseFloat(Number(jour/3).toFixed(2))
+money = 500 ; jour = 0 ; addby = parseFloat(Number(jour/3).toFixed(2))
 moneyMultiplier = 1
 moneyHtml = $("#argent")
 jourHtml = $("#jour")
@@ -164,30 +164,30 @@ function terminerJournee() {
 function customerPromptPurchase() {
   customerWalking = false
   if (totalIceStock==0 && totalLemonadeStock==0 && totalSliceStock==0 && totalSugarStock==0) {
-    money -= 0.05*money
+    money -= 0.03*money
   } else {
     if (totalIceStock>0 && meteo != 1 && meteo != 2) {
       if (iceDJ == true) {currentPrice = ((icePrice*1.35)*moneyMultiplier)*weatherMultiplier
       } else {currentPrice = (icePrice*moneyMultiplier)*weatherMultiplier}
-      money += currentPrice ; totalIceStock -= 1; updateStockPrice(false)
+      money += currentPrice ; totalIceStock -= 1
     }
     if (totalLemonadeStock>0){
       if (lemonadeDJ == true) {currentPrice = ((lemonadePrice*1.35)*moneyMultiplier)*weatherMultiplier
       } else {currentPrice = (lemonadePrice*moneyMultiplier)*weatherMultiplier}
-      money += currentPrice ; totalLemonadeStock -=1 ; updateStockPrice(false)
+      money += currentPrice ; totalLemonadeStock -=1 
     }
     if (totalSliceStock>0){
       if (sliceDJ == true) {currentPrice = ((slicePrice*1.35)*moneyMultiplier)*weatherMultiplier
       } else {currentPrice = (slicePrice*moneyMultiplier)*weatherMultiplier}
-      money += currentPrice ; totalSliceStock -=1 ; updateStockPrice(false)
+      money += currentPrice ; totalSliceStock -=1 
     }
     if (totalSugarStock>0){
       if (sugarDJ == true) {currentPrice += ((sugarPrice*1.35)*moneyMultiplier)*weatherMultiplier
       } else {currentPrice += (sugarPrice*moneyMultiplier)*weatherMultiplier}
-      money += currentPrice ; totalSugarStock -=1 ; updateStockPrice(false)
+      money += currentPrice ; totalSugarStock -=1
     }
   }
-  updateMoney()
+  updateMoney() ; updateStockPrice(false)
 }
 
 function customerSpawn() {
