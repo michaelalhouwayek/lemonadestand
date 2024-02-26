@@ -47,7 +47,7 @@ neige = $("#neige"); tempete = $("#tempete"); pluie = $("#pluie"); nuage = $("#n
 time_left = 0
 customerMultiplier = 3
 // MONEY AND DAY VARIABLES AND FUNCTIONS //
-money = 5 ; jour = 0 ; addby = parseFloat(Number(jour/3).toFixed(2))
+money = 5000 ; jour = 0 ; addby = parseFloat(Number(jour/3).toFixed(2))
 moneyMultiplier = 1
 moneyHtml = $("#argent")
 jourHtml = $("#jour")
@@ -68,7 +68,10 @@ updateJour() ; updateMoney()
 ///////
 
 function setMeteo() {
-  meteo = randint(1,6)
+  meteo = null
+  if (upgrade2Owned == true) {meteo = randint(3,6)
+  } else {meteo = randint(1,6)}
+  
   if (meteo == 1) {
     temperature = randint(15,20)
     neige.show() ; previousMeteo = neige;
@@ -124,7 +127,8 @@ function demarrerJournee() {
   }
   $("#startDay").attr("disabled", "disabled");
   jour += 1 ; time_left = 20
-  setMeteo() ; updateJour() ; updateMoney() ; updateStockPrice(false)
+  $("#titreMeteo").html("Metéo du jour: ") ; if (upgrade1Owned == false) {setMeteo()}
+  updateJour() ; updateMoney() ; updateStockPrice(false)
 
   var dayCycle = setInterval(function() {
     if (time_left == 0) {
@@ -153,7 +157,7 @@ function terminerJournee() {
   IngredientDJ()
   adInput.removeAttr("disabled"); adInput.val("0") ; adsValue = 0 ; moneyMultiplier = 1 ; weatherMultiplier = 1 ; customerMultiplier = 3
   previousMeteo.hide();
-  updateStockPrice(false)
+  updateStockPrice(false) ; if (upgrade1Owned == true) {$("#titreMeteo").html("Météo de la journée à venir: ") ; setMeteo()}
   enableButtons() ; updateMoney() ; checkGameOver()
 }
 
@@ -243,7 +247,7 @@ function ConfirmerAchatUpgrades(upgradeNum) {
   if (upgradeNum == 1 && 50 <= money) {
     money -= 50 ; updateMoney()
     upg1But.css("display","none")
-    upg1Title.html("Amélioration 1: Météo Hebdomadaire Permanente! - ✅✅✅ ")
+    upg1Title.html("Amélioration 1: Prévision quotidienne de la météo! - ✅✅✅ ")
     upgrade1Owned = true ; upgrade1()
   } else if (upgradeNum == 2 && 100 <= money) {
     money -= 100 ; updateMoney()
@@ -287,11 +291,12 @@ function enableButtons() {
 
 function upgrade1() {
   alert("Upgrade 1 purchased succesfully")
-  // loop or smth
+  $("#titreMeteo").html("Météo de la journée à venir: ")
+  upgrade1Owned = true ; setMeteo()
 }
 function upgrade2() {
   alert("Upgrade 2 purchased succesfully")
-  // loop or smth
+  upgrade2Owned = true
 }
 
 function applySliderMultiplier() {
