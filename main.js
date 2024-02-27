@@ -69,7 +69,7 @@ updateJour() ; updateMoney()
 ///////
 
 function setMeteo() {
-  meteo = null ; weatherMultiplier = 1
+  meteo = null
   if (upgrade2Owned == true) {meteo = randint(3,6)
   } else {meteo = randint(1,6)}
   
