@@ -10,7 +10,7 @@
 **2 - Les mathematiques du programme (multiplieurs, achats, bonus, etc)**
 - A coté de votre argent, il y en a un multiplieur qui sera appliquer sur le prix de vente des produits, il consiste du multiplier de meteo mulitplié par le multiplier de publicités. **(Voir infos sur ces deux par suite)**
 - Le multiplieur de meteo sera initialiser aléatoirement par le meteo : neige:0.65;tempete:0.75;pluie:0.85;nuage:1;soleil:1.15
-- Ce multiplieur peu baisser d'avantage en corrélation avec la valeur du prix que vous choisissez des ingrédients, le plus haut que leur prix est, le plus bas que sera le multiplieur. Voici l'image de la variation:
+- Ce multiplieur peu baisser d'avantage en corrélation avec la valeur du prix que vous choisissez des ingrédients, le plus haut que leur prix est, le plus bas que sera le multiplieur. Voici l'image de la variation: <br/>
 <img width="409" alt="image" src="https://github.com/michaelalhouwayek/lemonadestand/assets/156347349/8978b8b2-523e-4458-8188-d33ae21f2cf7"> <br/>
 - Le multiplieur de publicité sera appliqué pour 5 jours sur le multiplieur globale (meteo*publicité), il peut etre de 1.10,1.25,1.50 (voir jeu)
 - De plus un autre multiplieur existant est celui de l'ingredient du jour; chaque jour il y en a une chance de 50% qu'un ingredient est choisi comme "ingredient du jour", son prix a la vente sera donc augmenté de 35% (x1.35 le prix que vous choisissez). Ce multiplieur n'est pas lié multiplieur globale.
