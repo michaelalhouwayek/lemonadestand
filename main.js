@@ -35,6 +35,7 @@ upg1Title = $("#upg1Title") ; upg2Title = $("#upg2Title")
 // ADS VARIABLES
 adInput = $("#ads") ; adInput.on("input", function () {ConfirmerAchatAdvert()}) // 0 : pick, 5: +5% for $50, 10: 10% for $75, 15: 15% for $15
 adsValue = 0 ; adsOptionRemove = $("#adsOptionRemove")
+adTen = $("#adTen") ; adTwenty = $("#adTwenty") ; adFifty = $("#adFifty") ; liveAd = null
 //
 // WEATHER VARIABLES //
 meteo = null // 1 is snowy ; 2 is stormy ; 3 is rainy ; 4 is cloudy ; 5 is sunny
@@ -62,7 +63,7 @@ function updateMoney() {
   if (totalMult <= 0) {
     moneyHtml.html("Argent: $"+money+" || x0")
   } else {
-    moneyHtml.html("Argent: $"+money+" || x"+totalMult)
+    moneyHtml.html("Argent: $"+money+" || x"+totalMult.toFixed(2))
   }
 }
 updateJour() ; updateMoney()
@@ -158,7 +159,7 @@ function terminerJournee() {
   alert("Journee terminee!") ; $("#startDay").removeAttr("disabled") ; $("#startDay").val("Demarrer la journée "+(jour+1)+"!")
   IngredientDJ()
   if (adDayCounter != 0) {adDayCounter -= 1
-  } else {adInput.removeAttr("disabled"); adInput.val("0") ; adsValue = 0 ; moneyMultiplier = 1}
+  } else {adInput.removeAttr("disabled"); adInput.val("0") ; adsValue = 0 ; moneyMultiplier = 1 ; liveAd.hide() ; liveAd = null}
   weatherMultiplier = 1 ; customerMultiplier = 3
   previousMeteo.hide();
   updateStockPrice(false) ; if (upgrade1Owned == true) {$("#titreMeteo").html("Météo de la journée à venir: ") ; setMeteo()}
@@ -168,7 +169,7 @@ function terminerJournee() {
 function customerPromptPurchase() {
   customerWalking = false ; updateMoney() /*>>> to make sure totalmult is calculated */
   if (totalIceStock==0 && totalLemonadeStock==0 && totalSliceStock==0 && totalSugarStock==0) {
-    money -= 0.03*money
+    money -= 0.02*money
   } else {
     if (totalIceStock>0 && meteo != 1 && meteo != 2) {
       if (iceDJ == true) {currentPrice = (icePrice*1.35)*totalMult
@@ -265,12 +266,15 @@ function ConfirmerAchatAdvert() {
   if (adInput.val() == 5 && money >= 20) {
     money -= 20
     moneyMultiplier = 1.10 ; adsValue = adInput.val() ; adInput.attr("disabled", "disabled");
+    liveAd = adTen ; liveAd.show()
   } else if (adInput.val() == 10 && money >= 40) {
     money -= 40
     moneyMultiplier = 1.25 ; adsValue = adInput.val() ; adInput.attr("disabled", "disabled");
+    liveAd = adTwenty ; liveAd.show()
   } else if (adInput.val() == 15 && money >= 80) {
     money -= 80
     moneyMultiplier = 1.50 ; adsValue = adInput.val() ; adInput.attr("disabled", "disabled");
+    liveAd = adFifty ; liveAd.show()
   } else {
     alert("Pas suffisament d'argent, advertissement pas acheter! ")
     adInput.val("0")

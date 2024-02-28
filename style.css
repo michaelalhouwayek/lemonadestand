@@ -94,6 +94,15 @@ footer {
     height: 30%;
 }
 
+#adTen,#adTwenty,#adFifty {
+    position: absolute;
+    margin-top: 335px;
+    margin-left: -90px;
+    width: 6%;
+    rotate: -20deg;
+    display: none;
+}
+
 #jeu_main {
     border: solid;
     border-width: 100%;
