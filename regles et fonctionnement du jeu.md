@@ -4,7 +4,7 @@
 - Si vous avez suffisament d'argent; achetez des ameliorations (permanentes) dans la section "Améliorations" et/ou une publicite (pour 5 jour) qui donne un bonus appliquer au multiplieur general.
 - Finalement, dans le menu "stock" vous achetez les differents ingredients sachant que le plus que vous en achetez, le plus que le prix d'un stock devient cher, et si vous en achetez pas, il baissera. **(voir mathematiques pour + d'infos)**
 - Apres avoir tout achetez et gérer, vous appuyez sur "confirmer les parametres" et puis vous commencer votre journée, une meteo entre [neige,tempete,pluie,nuage,soleil] generée aléatoirement affectera le multiplieur generale causant en consequence une baisse ou hausse du prix de vente de produits.
-- Si vous n'avez aucun stock vous perderait 3% de votre argent en cause de dissatisfaction de client. Le jeu termine si vous n'avez pas de stock et pas suffisamment d'argent pour en acheter.
+- Si vous n'avez aucun stock vous perderait 2% de votre argent en cause de dissatisfaction de client. Le jeu termine si vous n'avez pas de stock et pas suffisamment d'argent pour en acheter.
 - D'apres ces informations, vous pouvez construire votre strategie pour efficacement gérer votre stand et votre finances. Boonne chance!
 
 **2 - Les mathematiques du programme (multiplieurs, achats, bonus, etc)**
