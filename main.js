@@ -14,6 +14,15 @@ priceL = $("#lemonadePrice") ; priceI = $("#icePrice") ; priceS = $("#sugarPrice
 lemonadePrice = 0 ; icePrice = 0 ; sugarPrice = 0 ; slicePrice = 0
 lemonadeDJ = false ; iceDJ = false ; sliceDJ = false ; sugarDJ = false ; ingDJhtml = $("#ingDJhtml") /*its actually an input*/
 //
+// CUSTOMER VARIABLES
+cust1 = $("#customer1") ; c1Live = false
+cust2 = $("#customer2") ; c2Live = false
+cust3 = $("#customer3") ; c3Live = false
+cust4 = $("#customer4") ; c4Live = false
+cust5 = $("#customer5") ; c5Live = false
+standHTML = $("#lemonade_stand")
+custProcess = false
+//
 // STOCK VARIABLES //
 iceVal = $("#numIceValue")
 lemonadeVal = $("#numLemonadeValue")
@@ -122,7 +131,6 @@ function IngredientDJ() {
   }
 } IngredientDJ()
 
-customerWalking = false
 function demarrerJournee() {
   if (confirmedParams == false) {
     alert("Vous n'aviez pas confirmer les parametres!")
@@ -137,9 +145,9 @@ function demarrerJournee() {
     if (time_left == 0) {
       terminerJournee() ; clearInterval(dayCycle)
     } else {
-      if (randint(1,customerMultiplier) == 3 && customerWalking == false) {
-        customerWalking = true
-        customerPromptPurchase() //CHANGE
+      if (randint(1,customerMultiplier) == 3 && custProcess == false) {
+        custProcess = true
+        customerPromptPurchase()
         console.log("a customer has spawned")
       }
       time_left -= 1 ; $("#startDay").val("il reste: "+time_left+"s dans la journée "+jour)
@@ -159,7 +167,7 @@ function terminerJournee() {
   alert("Journee terminee!") ; $("#startDay").removeAttr("disabled") ; $("#startDay").val("Demarrer la journée "+(jour+1)+"!")
   IngredientDJ()
   if (adDayCounter != 0) {adDayCounter -= 1
-  } else {adInput.removeAttr("disabled"); adInput.val("0") ; adsValue = 0 ; moneyMultiplier = 1 ; liveAd.hide() ; liveAd = null}
+  } else if (liveAd != null) {adInput.removeAttr("disabled"); adInput.val("0") ; adsValue = 0 ; moneyMultiplier = 1 ; liveAd.hide() ; liveAd = null}
   weatherMultiplier = 1 ; customerMultiplier = 3
   previousMeteo.hide();
   updateStockPrice(false) ; if (upgrade1Owned == true) {$("#titreMeteo").html("Météo de la journée à venir: ") ; setMeteo()}
@@ -167,7 +175,7 @@ function terminerJournee() {
 }
 
 function customerPromptPurchase() {
-  customerWalking = false ; updateMoney() /*>>> to make sure totalmult is calculated */
+  updateMoney() /*>>> to make sure totalmult is calculated */
   if (totalIceStock==0 && totalLemonadeStock==0 && totalSliceStock==0 && totalSugarStock==0) {
     money -= 0.02*money
   } else {
@@ -195,22 +203,14 @@ function customerPromptPurchase() {
   updateMoney() ; updateStockPrice(false)
 }
 
-function customerSpawn() {
-  customerWalking = true
-  destination = ($("#lemonade_stand").css("margin-left"))+4
-  customer = $("#customer"+randint(1,6))
-  customer.css("display","block")
-  current_margin = customer.css("margin-left")
-  console.log(customer+" needs to get from "+current_margin+" to "+destination)
+function customerSpawn() { 
+  if (c1Live == false) {c1Live = true ; c1Walk()
+  } else if (c2Live == false) {c2Live = true ; c2Walk() 
+  } else if (c3Live == false) {c3Live = true ; c3Walk()
+  } else if (c4Live == false) {c4Live = true ; c4Walk()
+  } else if (c5Live == false) {c5Live = true ; c5Walk() }
   
-  var customerWalking = setInterval(function() {
-    if (current_margin != destination && time_left != 0) {
-      
-    } else {
-      customerPromptPurchase()
-      clearInterval(customerWalking)
-    }
-  }, 100 );
+  custProcess = false
 }
 
 function updateStockPrice(arg) {
@@ -243,7 +243,7 @@ function ConfirmerAchatStock() {
   if (prixTotal <= money) {
     totalIceStock += Number(iceVal.val()) ; totalLemonadeStock += Number(lemonadeVal.val()) ; totalSugarStock += Number(sugarVal.val()) ; totalSliceStock += Number(sliceVal.val())
     money -= prixTotal ; updateMoney()
-    icePJ += Number(iceVal.val()) ; lemonadePJ += Number(lemonadeVal.val()) ; sugarPJ += Number(sugarVal.val()) ; slicePJ = Number(sliceVal.val())
+    icePJ += Number(iceVal.val()) ; lemonadePJ += Number(lemonadeVal.val()) ; sugarPJ += Number(sugarVal.val()) ; slicePJ += Number(sliceVal.val())
   }
   updateStockPrice(false) ; iceVal.val(0) ; lemonadeVal.val(0) ; sugarVal.val(0) ; sliceVal.val(0)
 }
@@ -347,4 +347,3 @@ function changeSliderVal(slider,price) {
     slicePrice = val
   }
 }
-
