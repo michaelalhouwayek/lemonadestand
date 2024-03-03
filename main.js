@@ -200,7 +200,7 @@ function customerPromptPurchase() {
       money += currentPrice ; totalSugarStock -=1
     }
   }
-  updateMoney() ; updateStockPrice(false)
+  updateMoney() ; updateStockPrice(false) ; custProcess = false
 }
 
 function customerSpawn() { 
