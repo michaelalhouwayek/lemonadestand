@@ -57,7 +57,7 @@ neige = $("#neige"); tempete = $("#tempete"); pluie = $("#pluie"); nuage = $("#n
 time_left = 0
 customerMultiplier = 3
 // MONEY AND DAY VARIABLES AND FUNCTIONS //
-money = 500 ; jour = 0 ; addby = parseFloat(Number(jour/3).toFixed(2))
+money = 5 ; jour = 0 ; addby = parseFloat(Number(jour/3).toFixed(2))
 moneyMultiplier = 1 /* mult de pub */ ; adDayCounter = 0
 totalMult = 1
 moneyHtml = $("#argent")
@@ -168,6 +168,7 @@ function terminerJournee() {
   IngredientDJ()
   if (adDayCounter != 0) {adDayCounter -= 1
   } else if (liveAd != null) {adInput.removeAttr("disabled"); adInput.val("0") ; adsValue = 0 ; moneyMultiplier = 1 ; liveAd.hide() ; liveAd = null}
+  else {adInput.removeAttr("disabled")}
   weatherMultiplier = 1 ; customerMultiplier = 3
   previousMeteo.hide();
   updateStockPrice(false) ; if (upgrade1Owned == true) {$("#titreMeteo").html("Météo de la journée à venir: ") ; setMeteo()}
@@ -218,16 +219,16 @@ function updateStockPrice(arg) {
   if (arg) {
     if (icePJ == 0) {
       iceVarP = parseFloat((iceVarP*0.9).toFixed(2))
-    } else {iceVarP += parseFloat((((icePJ-(icePJ%3))/3)*0.15).toFixed(2))}
+    } else {iceVarP += parseFloat((((icePJ-(icePJ%3))/3)*0.065).toFixed(2))}
     if (lemonadePJ == 0) {
       lemonadeVarP = parseFloat((lemonadeVarP*0.9).toFixed(2))
-    } else {lemonadeVarP += parseFloat((((lemonadePJ-(lemonadePJ%3))/3)*0.75).toFixed(2))}
+    } else {lemonadeVarP += parseFloat((((lemonadePJ-(lemonadePJ%3))/3)*0.05).toFixed(2))}
     if (sugarPJ == 0) {
       sugarVarP = parseFloat((sugarVarP*0.9).toFixed(2))
-    } else {sugarVarP += parseFloat((((sugarPJ-(sugarPJ%3))/3)*0.3).toFixed(2))}
+    } else {sugarVarP += parseFloat((((sugarPJ-(sugarPJ%3))/3)*0.08).toFixed(2))}
     if (slicePJ == 0) {
       sliceVarP = parseFloat((sliceVarP*0.9).toFixed(2))
-    } else {sliceVarP += parseFloat((((slicePJ-(slicePJ%3))/3)*0.15).toFixed(2))}
+    } else {sliceVarP += parseFloat((((slicePJ-(slicePJ%3))/3)*0.065).toFixed(2))}
 
     icePJ = 0; lemonadePJ = 0; slicePJ = 0; sugarPJ = 0
   }
