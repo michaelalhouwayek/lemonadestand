@@ -203,7 +203,7 @@ footer {
 #customer1,#customer2,#customer3,#customer4,#customer5,#customer6 {
     display:none;
     width: 10%;
-    margin-left: -320px;
+    margin-left: -400px;
     margin-top: 300px;
     position: absolute;
 }

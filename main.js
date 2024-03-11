@@ -1,3 +1,8 @@
+$("#startDay").click(function() {demarrerJournee()})
+$("#confirmerStock").click(function () {ConfirmerAchatStock()})
+$("#upgrade1").click(function () {ConfirmerAchatUpgrades(1)})
+$("#upgrade2").click(function () {ConfirmerAchatUpgrades(2)})
+$("#confirmerTout").click(function() {disableButtons()});
 // RANDINT FUNCTION //
 function randint(min, max) {
   var alea = min + Math.floor(Math.random() * (max - min + 1));
@@ -6,68 +11,68 @@ function randint(min, max) {
 }
 //
 // SLIDER VARAIBLES //
-sliderL = $("#sliderLemonadeValue") ; sliderL.on("input", function () {changeSliderVal("#sliderLemonadeValue","#lemonadePrice")}); changeSliderVal("#sliderLemonadeValue","#lemonadePrice")
-sliderI = $("#sliderIceValue") ; sliderI.on("input", function () {changeSliderVal("#sliderIceValue","#icePrice")}); changeSliderVal("#sliderIceValue","#icePrice")
-sliderS = $("#sliderSugarValue") ; sliderS.on("input", function () {changeSliderVal("#sliderSugarValue","#sugarPrice")}); changeSliderVal("#sliderSugarValue","#sugarPrice")
-sliderSlice = $("#sliderSliceValue") ; sliderSlice.on("input", function () {changeSliderVal("#sliderSliceValue","#slicePrice")}); changeSliderVal("#sliderSliceValue","#slicePrice")
-priceL = $("#lemonadePrice") ; priceI = $("#icePrice") ; priceS = $("#sugarPrice") ; priceSlice = $("#slicePrice")
-lemonadePrice = 0 ; icePrice = 0 ; sugarPrice = 0 ; slicePrice = 0
-lemonadeDJ = false ; iceDJ = false ; sliceDJ = false ; sugarDJ = false ; ingDJhtml = $("#ingDJhtml") /*its actually an input*/
+const sliderL = $("#sliderLemonadeValue") ; sliderL.on("input", function () {changeSliderVal("#sliderLemonadeValue","#lemonadePrice")}); changeSliderVal("#sliderLemonadeValue","#lemonadePrice")
+const sliderI = $("#sliderIceValue") ; sliderI.on("input", function () {changeSliderVal("#sliderIceValue","#icePrice")}); changeSliderVal("#sliderIceValue","#icePrice")
+const sliderS = $("#sliderSugarValue") ; sliderS.on("input", function () {changeSliderVal("#sliderSugarValue","#sugarPrice")}); changeSliderVal("#sliderSugarValue","#sugarPrice")
+const sliderSlice = $("#sliderSliceValue") ; sliderSlice.on("input", function () {changeSliderVal("#sliderSliceValue","#slicePrice")}); changeSliderVal("#sliderSliceValue","#slicePrice")
+const priceL = $("#lemonadePrice") ; const priceI = $("#icePrice") ; const priceS = $("#sugarPrice") ; const priceSlice = $("#slicePrice")
+var lemonadePrice = 0 ; var icePrice = 0 ; var sugarPrice = 0 ; var slicePrice = 0
+var lemonadeDJ = false ; var iceDJ = false ; var sliceDJ = false ; var sugarDJ = false ; const ingDJhtml = $("#ingDJhtml") /*its actually an input*/
 //
 // CUSTOMER VARIABLES
-cust1 = $("#customer1") ; c1Live = false
-cust2 = $("#customer2") ; c2Live = false
-cust3 = $("#customer3") ; c3Live = false
-cust4 = $("#customer4") ; c4Live = false
-cust5 = $("#customer5") ; c5Live = false
-standHTML = $("#lemonade_stand")
-custProcess = false
+const cust1 = $("#customer1") ; var c1Live = false
+const cust2 = $("#customer2") ; var c2Live = false
+const cust3 = $("#customer3") ; var c3Live = false
+const cust4 = $("#customer4") ; var c4Live = false
+const cust5 = $("#customer5") ; var c5Live = false
+const standHTML = $("#lemonade_stand")
+var custProcess = false
 //
 // STOCK VARIABLES //
-iceVal = $("#numIceValue")
-lemonadeVal = $("#numLemonadeValue")
-sugarVal = $("#numSugarValue")
-sliceVal = $("#numSliceValue")
-htmlIce = $("#iceStock") ; totalIceStock = 0
-htmlLemonade = $("#lemonadeStock") ; totalLemonadeStock = 0
-htmlSugar = $("#sugarStock") ; totalSugarStock = 0
-htmlSlice = $("#sliceStock") ; totalSliceStock = 0
-lemonadeVarP = 1.25 ; iceVarP = 0.25 ; sliceVarP = 0.25 ; sugarVarP = 0.50
-icePJ = 0 ; lemonadePJ = 0 ; slicePJ  = 0 ; sugarPJ = 0
-confirmerStock = $("#confirmerStock")
+const iceVal = $("#numIceValue")
+const lemonadeVal = $("#numLemonadeValue")
+const sugarVal = $("#numSugarValue")
+const sliceVal = $("#numSliceValue")
+const htmlIce = $("#iceStock") ; var totalIceStock = 0
+const htmlLemonade = $("#lemonadeStock") ; var totalLemonadeStock = 0
+const htmlSugar = $("#sugarStock") ; var totalSugarStock = 0
+const htmlSlice = $("#sliceStock") ; var totalSliceStock = 0
+var lemonadeVarP = 1.25 ; var iceVarP = 0.25 ; var sliceVarP = 0.25 ; var sugarVarP = 0.50
+var icePJ = 0 ; var lemonadePJ = 0 ; var slicePJ  = 0 ; var sugarPJ = 0
+const confirmerStock = $("#confirmerStock")
 //
 // UPGRADE VARIABLES
-upgrade1Owned = false ; upgrade2Owned = false
-upg1But = $("#upgrade1Button") ; upg2But = $("#upgrade2Button")
-upg1Title = $("#upg1Title") ; upg2Title = $("#upg2Title")
+var upgrade1Owned = false ; var upgrade2Owned = false
+const upg1But = $("#upgrade1Button") ; const upg2But = $("#upgrade2Button")
+const upg1Title = $("#upg1Title") ; const upg2Title = $("#upg2Title")
 //
 // ADS VARIABLES
-adInput = $("#ads") ; adInput.on("input", function () {ConfirmerAchatAdvert()}) // 0 : pick, 5: +5% for $50, 10: 10% for $75, 15: 15% for $15
-adsValue = 0 ; adsOptionRemove = $("#adsOptionRemove")
-adTen = $("#adTen") ; adTwenty = $("#adTwenty") ; adFifty = $("#adFifty") ; liveAd = null
+const adInput = $("#ads") ; adInput.on("input", function () {ConfirmerAchatAdvert()}) // 0 : pick, 5: +5% for $50, 10: 10% for $75, 15: 15% for $15
+var adsValue = 0 ; const adsOptionRemove = $("#adsOptionRemove")
+const adTen = $("#adTen") ; const adTwenty = $("#adTwenty") ; const adFifty = $("#adFifty") ; var liveAd = null
 //
 // WEATHER VARIABLES //
-meteo = null // 1 is snowy ; 2 is stormy ; 3 is rainy ; 4 is cloudy ; 5 is sunny
-previousMeteo = "";
-temperature = null;
-weatherMultiplier = 1
-neige = $("#neige"); tempete = $("#tempete"); pluie = $("#pluie"); nuage = $("#nuage"); soleil = $("#soleil")
+var meteo = null // 1 is snowy ; 2 is stormy ; 3 is rainy ; 4 is cloudy ; 5 is sunny
+var previousMeteo = "";
+var temperature = null;
+var weatherMultiplier = 1
+const neige = $("#neige"); const tempete = $("#tempete"); const pluie = $("#pluie"); const nuage = $("#nuage"); const soleil = $("#soleil")
 //
 // TIME VARIABLE //
-time_left = 0
-customerMultiplier = 3
+var time_left = 0
+var customerMultiplier = 3
 // MONEY AND DAY VARIABLES AND FUNCTIONS //
-money = 5 ; jour = 0 ; addby = parseFloat(Number(jour/3).toFixed(2))
-moneyMultiplier = 1 /* mult de pub */ ; adDayCounter = 0
-totalMult = 1
-moneyHtml = $("#argent")
-jourHtml = $("#jour")
+var money = 5 ; var jour = 0 ; var addby = parseFloat(Number(jour/3).toFixed(2))
+var moneyMultiplier = 1 /* mult de pub */ ; var adDayCounter = 0
+var totalMult = 1
+const moneyHtml = $("#argent")
+const jourHtml = $("#jour")
 
 function updateJour() {
   jourHtml.html("Jour: "+jour)
 }
 function updateMoney() {
-  totalMult = weatherMultiplier*moneyMultiplier
+  var totalMult = weatherMultiplier*moneyMultiplier
   money = parseFloat(Number(money).toFixed(2))
   if (totalMult <= 0) {
     moneyHtml.html("Argent: $"+money+" || x0")
@@ -119,9 +124,9 @@ function setMeteo() {
 function IngredientDJ() {
   lemonadeDJ = false ; iceDJ = false ; sugarDJ = false ; sliceDJ = false
   ingDJhtml.val("Ingredient du jour (+35%): Aucun")
-  firstRand = randint(1,2)
+  var firstRand = randint(1,2)
   if (firstRand==1) {
-    rand = randint(1,4)
+    var rand = randint(1,4)
     if (rand==1) {lemonadeDJ = true ; ingDJhtml.val("Ingredient du jour (+35%): Limonade")}
     else if (rand==2) {iceDJ = true ; ingDJhtml.val("Ingredient du jour (+35%): Glacons")}
     else if (rand==3) {sugarDJ = true ; ingDJhtml.val("Ingredient du jour (+35%): Sucre")}
@@ -147,7 +152,7 @@ function demarrerJournee() {
     } else {
       if (randint(1,customerMultiplier) == 3 && custProcess == false) {
         custProcess = true
-        customerPromptPurchase()
+        customerSpawn()
         console.log("a customer has spawned")
       }
       time_left -= 1 ; $("#startDay").val("il reste: "+time_left+"s dans la journée "+jour)
@@ -157,13 +162,14 @@ function demarrerJournee() {
 }
 
 function checkGameOver() {
-  totalStock = totalIceStock + totalLemonadeStock + totalSliceStock + totalSugarStock
+  var totalStock = totalIceStock + totalLemonadeStock + totalSliceStock + totalSugarStock
   if (totalStock == 0 && money < iceVarP && money < lemonadeVarP && money < sugarVarP && money < sliceVarP) {
     alert("Vous avez perdu! Reactualiser la page pour recommencer!") 
   }
 }
 
 function terminerJournee() {
+  c1Live = false ; c2Live = false ; c3Live = false ; c4Live = false ; c5Live = false
   alert("Journee terminee!") ; $("#startDay").removeAttr("disabled") ; $("#startDay").val("Demarrer la journée "+(jour+1)+"!")
   IngredientDJ()
   if (adDayCounter != 0) {adDayCounter -= 1
@@ -205,11 +211,12 @@ function customerPromptPurchase() {
 }
 
 function customerSpawn() { 
-  if (c1Live == false) {c1Live = true ; c1Walk()
-  } else if (c2Live == false) {c2Live = true ; c2Walk() 
-  } else if (c3Live == false) {c3Live = true ; c3Walk()
-  } else if (c4Live == false) {c4Live = true ; c4Walk()
-  } else if (c5Live == false) {c5Live = true ; c5Walk() }
+  if (c1Live == false) {c1Live = true ; customerPromptPurchase() ; Module1.c1Walk(cust1,standHTML)
+  } else if (c2Live == false) {c2Live = true ; customerPromptPurchase() ; Module2.c2Walk(cust2,standHTML)
+  } else if (c3Live == false) {c3Live = true ; customerPromptPurchase() ; Module3.c3Walk(cust3,standHTML)
+  } else if (c4Live == false) {c4Live = true ; customerPromptPurchase() ; Module4.c4Walk(cust4,standHTML)
+  } else if (c5Live == false) {c5Live = true ; customerPromptPurchase() ; Module5.c5Walk(cust5,standHTML) 
+  } else {Module1.c1Walk(cust1,standHTML)}
   
   custProcess = false
 }
@@ -284,7 +291,7 @@ function ConfirmerAchatAdvert() {
   updateMoney()
 }
 
-confirmedParams = false
+var confirmedParams = false
 function disableButtons() {
   confirmedParams = true ; $("#confirmerTout").attr("disabled","disabled") ; applySliderMultiplier(); confirmerStock.attr("disabled","disabled"); updateStockPrice(true)
   sliderL.attr("disabled","disabled") ; sliderI.attr("disabled","disabled") ; sliderS.attr("disabled","disabled") ; sliderSlice.attr("disabled","disabled")
@@ -326,7 +333,7 @@ function applySliderMultiplier() {
 }
 
 function changeSliderVal(slider,price) {
-
+  var val = null
   if (slider === "#sliderLemonadeValue") {
     val = Math.round(($(slider).val() / 100)*2) / 2
     $(price).html("$"+val)
@@ -349,134 +356,9 @@ function changeSliderVal(slider,price) {
   }
 }
 
-// walkFuncs -- walking out function wouldnt work either bc more than one func?
-function c1Walk() {
-  customer = cust1 ; customer.show()
-  standDest = parseFloat(standHTML.css("margin-left"))+15
-  currentPos = parseFloat(customer.css("margin-left"))
-  endDest =  window.innerWidth
-
-  var walkingToLemonade = setInterval(function() {
-      currentPos += 5
-      customer.css("margin-left",currentPos+"px")
-      
-      if (customer.css("margin-left").match(/\d+/g)[0] >= standDest) {
-      customerPromptPurchase() ; walkingOut1() ; clearInterval(walkingToLemonade)
-      }
-  }, 50);
-
-  function walkingOut1() {
-      console.log("Started")
-      wo = setInterval(function() {
-      currentPos += 5
-      customer.css("margin-left",currentPos+"px")
-      if (customer.css("margin-left").match(/\d+/g)[0] >= endDest) {
-          c1Live = false ; customer.hide() ; clearInterval(wo)
-      }
-      }, 50);
-  }
-}
-function c2Walk() {
-  customer = cust2 ; customer.show()
-  standDest = parseFloat(standHTML.css("margin-left"))+15
-  currentPos = parseFloat(customer.css("margin-left"))
-  endDest =  window.innerWidth
-
-  var walkingToLemonade = setInterval(function() {
-    currentPos += 5
-    customer.css("margin-left",currentPos+"px")
-    
-    if (customer.css("margin-left").match(/\d+/g)[0] >= standDest) {
-      customerPromptPurchase() ; walkingOut() ; clearInterval(walkingToLemonade)
-    }
-  }, 50);
-  
-  function walkingOut() {
-    console.log("Started")
-    wo = setInterval(function() {
-      currentPos += 5
-      customer.css("margin-left",currentPos+"px")
-      if (customer.css("margin-left").match(/\d+/g)[0] >= endDest) {
-        c2Live = false ; customer.hide() ; clearInterval(wo)
-      }
-    }, 50);
-  }
-}
-function c3Walk() {
-  customer = cust3 ; customer.show()
-  standDest = parseFloat(standHTML.css("margin-left"))+15
-  currentPos = parseFloat(customer.css("margin-left"))
-  endDest =  window.innerWidth
-
-  var walkingToLemonade = setInterval(function() {
-    currentPos += 5
-    customer.css("margin-left",currentPos+"px")
-    
-    if (customer.css("margin-left").match(/\d+/g)[0] >= standDest) {
-      customerPromptPurchase() ; walkingOut() ; clearInterval(walkingToLemonade)
-    }
-  }, 50);
-  
-  function walkingOut() {
-    console.log("Started")
-    wo = setInterval(function() {
-      currentPos += 5
-      customer.css("margin-left",currentPos+"px")
-      if (customer.css("margin-left").match(/\d+/g)[0] >= endDest) {
-        c3Live = false ; customer.hide() ; clearInterval(wo)
-      }
-    }, 50);
-  }
-}
-function c4Walk() {
-  customer = cust4 ; customer.show()
-  standDest = parseFloat(standHTML.css("margin-left"))+15
-  currentPos = parseFloat(customer.css("margin-left"))
-  endDest =  window.innerWidth
-
-  var walkingToLemonade = setInterval(function() {
-    currentPos += 5
-    customer.css("margin-left",currentPos+"px")
-    
-    if (customer.css("margin-left").match(/\d+/g)[0] >= standDest) {
-      customerPromptPurchase() ; walkingOut() ; clearInterval(walkingToLemonade)
-    }
-  }, 50);
-  
-  function walkingOut() {
-    console.log("Started")
-    wo = setInterval(function() {
-      currentPos += 5
-      customer.css("margin-left",currentPos+"px")
-      if (customer.css("margin-left").match(/\d+/g)[0] >= endDest) {
-        c4Live = false ; customer.hide() ; clearInterval(wo)
-      }
-    }, 50);
-  }
-}
-function c5Walk() {
-  customer = cust5 ; customer.show()
-  standDest = parseFloat(standHTML.css("margin-left"))+15
-  currentPos = parseFloat(customer.css("margin-left"))
-  endDest =  window.innerWidth
-
-  var walkingToLemonade = setInterval(function() {
-    currentPos += 5
-    customer.css("margin-left",currentPos+"px")
-    
-    if (customer.css("margin-left").match(/\d+/g)[0] >= standDest) {
-      customerPromptPurchase() ; walkingOut() ; clearInterval(walkingToLemonade)
-    }
-  }, 50);
-  
-  function walkingOut() {
-    console.log("Started")
-    wo = setInterval(function() {
-      currentPos += 5
-      customer.css("margin-left",currentPos+"px")
-      if (customer.css("margin-left").match(/\d+/g)[0] >= endDest) {
-        c5Live = false ; customer.hide() ; clearInterval(wo)
-      }
-    }, 50);
-  }
-}
+// walkFuncs:
+import Module1 from './walkFuncs/c1Walk.js'
+import Module2 from './walkFuncs/c2Walk.js'
+import Module3 from './walkFuncs/c3Walk.js'
+import Module4 from './walkFuncs/c4Walk.js'
+import Module5 from './walkFuncs/c5Walk.js'
