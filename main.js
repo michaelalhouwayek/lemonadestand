@@ -183,6 +183,7 @@ function terminerJournee() {
 
 function customerPromptPurchase() {
   updateMoney() /*>>> to make sure totalmult is calculated */
+  var currentPrice = 0
   if (totalIceStock==0 && totalLemonadeStock==0 && totalSliceStock==0 && totalSugarStock==0) {
     money -= 0.02*money
   } else {
