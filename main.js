@@ -11,7 +11,7 @@ sliderI = $("#sliderIceValue") ; sliderI.on("input", function () {changeSliderVa
 sliderS = $("#sliderSugarValue") ; sliderS.on("input", function () {changeSliderVal("#sliderSugarValue","#sugarPrice")}); changeSliderVal("#sliderSugarValue","#sugarPrice")
 sliderSlice = $("#sliderSliceValue") ; sliderSlice.on("input", function () {changeSliderVal("#sliderSliceValue","#slicePrice")}); changeSliderVal("#sliderSliceValue","#slicePrice")
 priceL = $("#lemonadePrice") ; priceI = $("#icePrice") ; priceS = $("#sugarPrice") ; priceSlice = $("#slicePrice")
-lemonadePrice = 0 ; icePrice = 0 ; sugarPrice = 0 ; slicePrice = 0
+lemonadePrice = 0.5 ; icePrice = 0.1 ; sugarPrice = 0.25 ; slicePrice = 0.1
 lemonadeDJ = false ; iceDJ = false ; sliceDJ = false ; sugarDJ = false ; ingDJhtml = $("#ingDJhtml") /*its actually an input*/
 //
 // CUSTOMER VARIABLES
