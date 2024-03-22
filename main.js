@@ -369,4 +369,4 @@ function changeSliderVal(slider,price) {
 }
 
 // walkFuncs:
-import Module from './walkFuncs/cWalk.js'
+import Module from './cWalk.js'
