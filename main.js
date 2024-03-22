@@ -196,8 +196,8 @@ function customerPromptPurchase() {
       money += currentPrice ; totalSliceStock -=1 
     }
     if (totalSugarStock>0){
-      if (sugarDJ == true) {currentPrice += (sugarPrice*1.35)*totalMult
-      } else {currentPrice += sugarPrice*totalMult}
+      if (sugarDJ == true) {currentPrice = (sugarPrice*1.35)*totalMult
+      } else {currentPrice = sugarPrice*totalMult}
       money += currentPrice ; totalSugarStock -=1
     }
   }
