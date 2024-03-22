@@ -193,25 +193,21 @@ function customerPromptPurchase() {
     if (totalIceStock>0 && meteo != 1 && meteo != 2) {
       if (iceDJ == true) {currentPrice = (icePrice*1.35)*totalMult
       } else {currentPrice = icePrice*totalMult}
-      console.log(currentPrice)
       money += currentPrice ; totalIceStock -= 1
     }
     if (totalLemonadeStock>0){
       if (lemonadeDJ == true) {currentPrice = (lemonadePrice*1.35)*totalMult
       } else {currentPrice = lemonadePrice*totalMult}
-      console.log(currentPrice)
       money += currentPrice ; totalLemonadeStock -=1
     }
     if (totalSliceStock>0){
       if (sliceDJ == true) {currentPrice = (slicePrice*1.35)*totalMult
       } else {currentPrice = slicePrice*totalMult}
-      console.log(currentPrice)
       money += currentPrice ; totalSliceStock -=1
     }
     if (totalSugarStock>0){
-      if (sugarDJ == true) {currentPrice += (sugarPrice*1.35)*totalMult
+      if (sugarDJ == true) {currentPrice = (sugarPrice*1.35)*totalMult
       } else {currentPrice = sugarPrice*totalMult}
-      console.log(currentPrice)
       money += currentPrice ; totalSugarStock -=1
     }
   }
@@ -219,14 +215,14 @@ function customerPromptPurchase() {
 }
 
 function customerSpawn() { 
-  if (c1Live == false) {c1Live = true ; customerPromptPurchase() ; Module.cWalk(cust1,standHTML)
-  } else if (c2Live == false) {c2Live = true ; customerPromptPurchase() ; Module.cWalk(cust2,standHTML)
-  } else if (c3Live == false) {c3Live = true ; customerPromptPurchase() ; Module.cWalk(cust3,standHTML)
-  } else if (c4Live == false) {c4Live = true ; customerPromptPurchase() ; Module.cWalk(cust4,standHTML)
-  } else if (c5Live == false) {c5Live = true ; customerPromptPurchase() ; Module.cWalk(cust5,standHTML) 
-  } else if (c6Live == false) {c6Live = true ; customerPromptPurchase() ; Module.cWalk(cust6,standHTML) 
-  } else if (c7Live == false) {c7Live = true ; customerPromptPurchase() ; Module.cWalk(cust7,standHTML) 
-  } else if (c8Live == false) {c8Live = true ; customerPromptPurchase() ; Module.cWalk(cust8,standHTML) 
+  if (c1Live == false) {c1Live = true ; customerPromptPurchase() ; cWalk(cust1,standHTML)
+  } else if (c2Live == false) {c2Live = true ; customerPromptPurchase() ; cWalk(cust2,standHTML)
+  } else if (c3Live == false) {c3Live = true ; customerPromptPurchase() ; cWalk(cust3,standHTML)
+  } else if (c4Live == false) {c4Live = true ; customerPromptPurchase() ; cWalk(cust4,standHTML)
+  } else if (c5Live == false) {c5Live = true ; customerPromptPurchase() ; cWalk(cust5,standHTML) 
+  } else if (c6Live == false) {c6Live = true ; customerPromptPurchase() ; cWalk(cust6,standHTML) 
+  } else if (c7Live == false) {c7Live = true ; customerPromptPurchase() ; cWalk(cust7,standHTML) 
+  } else if (c8Live == false) {c8Live = true ; customerPromptPurchase() ; cWalk(cust8,standHTML) 
   }
   
   custProcess = false
@@ -368,5 +364,29 @@ function changeSliderVal(slider,price) {
   console.log(lemonadePrice,icePrice,sugarPrice,slicePrice)
 }
 
-// walkFuncs:
-import Module from './cWalk.js'
+function cWalk(customer,standHTML) {
+    customer.css("margin-left","-400px")
+    customer.show()
+    var standDest = parseFloat(standHTML.css("margin-left"))+15
+    var currentPos = parseFloat(customer.css("margin-left"))
+    var endDest =  window.innerWidth
+
+    var walkingToLemonade = setInterval(function() {
+        currentPos += 5
+        customer.css("margin-left",currentPos+"px")
+        
+        if (customer.css("margin-left").match(/\d+/g)[0] >= standDest) {
+        clearInterval(walkingToLemonade)
+
+        var wo = setInterval(function() {
+            currentPos += 5
+            customer.css("margin-left",currentPos+"px")
+            if (customer.css("margin-left").match(/\d+/g)[0] >= endDest-150) {
+                //c1Live = false ; 
+                customer.hide() ; clearInterval(wo)
+                customer.css("margin-left","-400px")
+            }
+        }, 30);
+        }
+    }, 30);
+}
