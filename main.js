@@ -25,6 +25,9 @@ const cust2 = $("#customer2") ; var c2Live = false
 const cust3 = $("#customer3") ; var c3Live = false
 const cust4 = $("#customer4") ; var c4Live = false
 const cust5 = $("#customer5") ; var c5Live = false
+const cust6 = $("#customer6") ; var c6Live = false
+const cust7 = $("#customer7") ; var c7Live = false
+const cust8 = $("#customer8") ; var c8Live = false
 const standHTML = $("#lemonade_stand")
 var custProcess = false
 //
@@ -72,7 +75,7 @@ function updateJour() {
   jourHtml.html("Jour: "+jour)
 }
 function updateMoney() {
-  var totalMult = weatherMultiplier*moneyMultiplier
+  totalMult = weatherMultiplier*moneyMultiplier
   money = parseFloat(Number(money).toFixed(2))
   if (totalMult <= 0) {
     moneyHtml.html("Argent: $"+money+" || x0")
@@ -190,21 +193,25 @@ function customerPromptPurchase() {
     if (totalIceStock>0 && meteo != 1 && meteo != 2) {
       if (iceDJ == true) {currentPrice = (icePrice*1.35)*totalMult
       } else {currentPrice = icePrice*totalMult}
+      console.log(currentPrice)
       money += currentPrice ; totalIceStock -= 1
     }
     if (totalLemonadeStock>0){
       if (lemonadeDJ == true) {currentPrice = (lemonadePrice*1.35)*totalMult
       } else {currentPrice = lemonadePrice*totalMult}
-      money += currentPrice ; totalLemonadeStock -=1 
+      console.log(currentPrice)
+      money += currentPrice ; totalLemonadeStock -=1
     }
     if (totalSliceStock>0){
       if (sliceDJ == true) {currentPrice = (slicePrice*1.35)*totalMult
       } else {currentPrice = slicePrice*totalMult}
-      money += currentPrice ; totalSliceStock -=1 
+      console.log(currentPrice)
+      money += currentPrice ; totalSliceStock -=1
     }
     if (totalSugarStock>0){
       if (sugarDJ == true) {currentPrice += (sugarPrice*1.35)*totalMult
-      } else {currentPrice += sugarPrice*totalMult}
+      } else {currentPrice = sugarPrice*totalMult}
+      console.log(currentPrice)
       money += currentPrice ; totalSugarStock -=1
     }
   }
@@ -212,12 +219,15 @@ function customerPromptPurchase() {
 }
 
 function customerSpawn() { 
-  if (c1Live == false) {c1Live = true ; customerPromptPurchase() ; Module1.c1Walk(cust1,standHTML)
-  } else if (c2Live == false) {c2Live = true ; customerPromptPurchase() ; Module2.c2Walk(cust2,standHTML)
-  } else if (c3Live == false) {c3Live = true ; customerPromptPurchase() ; Module3.c3Walk(cust3,standHTML)
-  } else if (c4Live == false) {c4Live = true ; customerPromptPurchase() ; Module4.c4Walk(cust4,standHTML)
-  } else if (c5Live == false) {c5Live = true ; customerPromptPurchase() ; Module5.c5Walk(cust5,standHTML) 
-  } else {Module1.c1Walk(cust1,standHTML)}
+  if (c1Live == false) {c1Live = true ; customerPromptPurchase() ; Module.cWalk(cust1,standHTML)
+  } else if (c2Live == false) {c2Live = true ; customerPromptPurchase() ; Module.cWalk(cust2,standHTML)
+  } else if (c3Live == false) {c3Live = true ; customerPromptPurchase() ; Module.cWalk(cust3,standHTML)
+  } else if (c4Live == false) {c4Live = true ; customerPromptPurchase() ; Module.cWalk(cust4,standHTML)
+  } else if (c5Live == false) {c5Live = true ; customerPromptPurchase() ; Module.cWalk(cust5,standHTML) 
+  } else if (c6Live == false) {c6Live = true ; customerPromptPurchase() ; Module.cWalk(cust6,standHTML) 
+  } else if (c7Live == false) {c7Live = true ; customerPromptPurchase() ; Module.cWalk(cust7,standHTML) 
+  } else if (c8Live == false) {c8Live = true ; customerPromptPurchase() ; Module.cWalk(cust8,standHTML) 
+  }
   
   custProcess = false
 }
@@ -355,11 +365,8 @@ function changeSliderVal(slider,price) {
     $(price).html("$"+val)
     slicePrice = val
   }
+  console.log(lemonadePrice,icePrice,sugarPrice,slicePrice)
 }
 
 // walkFuncs:
-import Module1 from './walkFuncs/c1Walk.js'
-import Module2 from './walkFuncs/c2Walk.js'
-import Module3 from './walkFuncs/c3Walk.js'
-import Module4 from './walkFuncs/c4Walk.js'
-import Module5 from './walkFuncs/c5Walk.js'
+import Module from './walkFuncs/cWalk.js'
