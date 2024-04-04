@@ -253,7 +253,8 @@ function updateStockPrice(arg) {
   htmlSlice.html(totalSliceStock+" | $"+sliceVarP.toFixed(2))
 }
 
-function ConfirmerAchatStock() { 
+function ConfirmerAchatStock() {
+  if (iceVal.val() < 0 || lemonadeVal.val() < 0 || sliceVal.val() < 0 || sugarVal.val() < 0) {alert("Vous pouvez pas acheter des valeurs negatives!") ; return null}
   var prixTotal = Number(iceVal.val()*iceVarP + lemonadeVal.val()*lemonadeVarP + sliceVal.val()*sliceVarP + sugarVal.val()*sugarVarP)
   if (prixTotal <= money) {
     totalIceStock += Number(iceVal.val()) ; totalLemonadeStock += Number(lemonadeVal.val()) ; totalSugarStock += Number(sugarVal.val()) ; totalSliceStock += Number(sliceVal.val())
