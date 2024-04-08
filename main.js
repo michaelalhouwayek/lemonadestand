@@ -362,7 +362,6 @@ function changeSliderVal(slider,price) {
     $(price).html("$"+val)
     slicePrice = val
   }
-  console.log(lemonadePrice,icePrice,sugarPrice,slicePrice)
 }
 
 function cWalk(customer,standHTML) {
